@@ -1,0 +1,22 @@
+body {
+    margin: 0px;
+    background-color: #F3F9FF;
+}
+
+/* WELCOME PAGE */
+
+#welcomeHeader {
+    height: 559px;
+    width: 390px;
+    background-image: url(../media/paViftBackground.svg);
+    background-position: center;
+    background-size: cover;
+    
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+}
+
+#logo {
+    margin-top: 67px;
+}
