@@ -7,11 +7,11 @@ body {
 
 #welcomeHeader {
     height: 559px;
-    width: 390px;
+    width: 100vw;
     background-image: url(../media/paViftBackground.svg);
     background-position: center;
     background-size: cover;
-   
+
     display: flex;
     align-items: baseline;
     justify-content: center;
