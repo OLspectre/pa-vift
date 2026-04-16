@@ -27,6 +27,18 @@
 
 
 body {
-    margin: 0px;
+    margin: 0;
     background-color: var(--backgroundColor);
+}
+
+.container {
+    margin-left: 16px;
+    margin-right: 16px;
+}
+
+h1,
+h4,
+button {
+    font-family: var(--hFont);
+    color: var(--hColor);
 }
