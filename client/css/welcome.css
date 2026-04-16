@@ -45,15 +45,6 @@ body {
     color: var(--pColorLight);
 }
 
-#welcomeMain button {
-    font-family: var(--pFont);
-    font-size: var(--pLarge);
-    color: #F3F9FF;
-    margin: 5px 0px 0px 0px;
+nav {
     width: 100%;
-    height: 44px;
-    background-color: var(--hColor);
-    border: none;
-    border-bottom: 4px solid #A7562E;
-    border-radius: 10px;
 }

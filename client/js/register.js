@@ -52,13 +52,18 @@ async function changePage() {
 
 function showLoadingAnimation() {
     const loadingScreen = document.querySelector("div#loading");
+    const displayCount = document.querySelector("#loading div");
+
     document.querySelector(".container").style.display = "none";
     loadingScreen.style.display = "flex";
 
     let i = 3;
 
     let interval = setInterval(() => {
-        loadingScreen.textContent = i;
+        displayCount.textContent = i;
+        // const logo = document.createElement("img");
+        // logo.src = "../ media / transition logo.svg";
+        // displayCount.append(logo);
         i--;
         console.log(i);
 

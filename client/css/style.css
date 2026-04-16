@@ -42,3 +42,24 @@ button {
     font-family: var(--hFont);
     color: var(--hColor);
 }
+
+a {
+    text-decoration: none;
+
+}
+
+
+.linkBTN {
+    display: flex;
+    justify-content: center;
+    font-family: var(--pFont);
+    font-size: var(--pLarge);
+    color: #F3F9FF;
+    margin: 5px 0px 0px 0px;
+    padding: 8px 0 8px 0;
+    width: 100%;
+    background-color: var(--hColor);
+    border: none;
+    border-bottom: 4px solid #A7562E;
+    border-radius: 10px;
+}

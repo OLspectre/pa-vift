@@ -1,27 +1,27 @@
 export const teams = [{
     id: 1,
     name: "",
-    password: "exempel1",
+    password: "1",
     currLocation: null
 },
 {
     id: 2,
     name: "",
-    password: "exempel2",
+    password: "2",
     currLocation: null
 
 },
 {
     id: 3,
     name: "",
-    password: "exempel3",
+    password: "3",
     currLocation: null
 
 },
 {
     id: 4,
     name: "",
-    password: "exempel4",
+    password: "4",
     currLocation: null
 
 },
