@@ -1,4 +1,4 @@
-import { getClue, submitAnswer } from "../controllers/gameController.js"
+// import { getClue, submitAnswer } from "../controllers/gameController.js"
 
 export async function handleGameRoutes(req) {
     const url = new URL(req.url)
@@ -6,6 +6,8 @@ export async function handleGameRoutes(req) {
     const method = req.method
 
     if (method === "GET" && path === "/game/clue") return getClue(req)
+
+        
     if (method === "POST" && path === "/game/answer") return submitAnswer(req)
 
     return new Response("Not found", { status: 404 })
