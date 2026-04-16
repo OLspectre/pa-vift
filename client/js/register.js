@@ -43,9 +43,9 @@ function findTeam(code) {
 async function changePage() {
     showLoadingAnimation();
 
-    // setTimeout(() => {
-    //     window.location.href = "../pages/rules.html";
-    // }, 4000)
+    setTimeout(() => {
+        window.location.href = "../pages/rules.html";
+    }, 5000)
 }
 
 
@@ -60,16 +60,14 @@ function showLoadingAnimation() {
     let i = 3;
 
     let interval = setInterval(() => {
-        displayCount.textContent = i;
-        // const logo = document.createElement("img");
-        // logo.src = "../ media / transition logo.svg";
-        // displayCount.append(logo);
         i--;
+        displayCount.textContent = i;
+
         console.log(i);
 
         if (i === 0) {
+            loadingScreen.textContent = "Kör!";
             clearInterval(interval);
-            // loadingScreen.style.display = "none";
         }
 
     }, 1000)
