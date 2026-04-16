@@ -18,7 +18,7 @@
     --pSmall: 12px;
 
     --hFont: ChangaOne;
-    --hColor: #F4A751;
+    --hColor: #e46e27;
     --h1Size: 48px;
     --h2Size: 36px;
     --h3Size: 24px;
@@ -29,59 +29,4 @@
 body {
     margin: 0px;
     background-color: var(--backgroundColor);
-}
-
-/* WELCOME PAGE */
-
-#welcomeHeader {
-    height: 559px;
-    width: 390px;
-    background-image: url(../media/paViftBackground.svg);
-    background-position: center;
-    background-size: cover;
-    
-    display: flex;
-    align-items: baseline;
-    justify-content: center;
-}
-
-
-#logo {
-    margin-top: 67px;
-}
-
-#welcomeMain {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 0px 16px 104px 16px;
-}
-
-#welcomeMain h2 {
-    font-family: var(--hFont);
-    font-size: var(--h2Size);
-    margin: 0px 0px 10px 0px;
-    color: var(--hColor);
-
-}
-
-#welcomeMain p {
-    font-family: var(--pFont);
-    font-size: 18px;
-    text-align: center;
-    margin: 6px 0px 20px 0px;
-    color: var(--pColorLight);
-}
-
-#welcomeMain button {
-    font-family: var(--pFont);
-    font-size: var(--pLarge);
-    color: #F3F9FF;
-    margin: 5px 0px 0px 0px;
-    width: 100%;
-    height: 44px;
-    background-color: #F4A751;
-    border: none;
-    border-bottom: 4px solid #CB8B44;
-    border-radius: 10px;
 }
