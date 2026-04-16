@@ -1,6 +1,32 @@
+@font-face {
+    font-family: ChangaOne;
+    src: url(../media/ChangaOne-Regular.ttf);
+}
+
+@font-face {
+    font-family: SofiaSans;
+    src: url(../media/SofiaSans-VariableFont_wght.ttf);
+}
+
+:root {
+    --backgroundColor: #F3F9FF;
+
+    --pFont: SofiaSans;
+    --pLarge: 20px;
+    --pMedium: 16px;
+    --pSmall: 12px;
+
+    --hFont: ChangaOne;
+    --h1Size: 48px;
+    --h2Size: 36px;
+    --h3Size: 24px;
+    --h4Size: 20px;
+}
+
+
 body {
     margin: 0px;
-    background-color: #F3F9FF;
+    background-color: var(--backgroundColor);
 }
 
 /* WELCOME PAGE */
@@ -17,6 +43,21 @@ body {
     justify-content: center;
 }
 
+
 #logo {
     margin-top: 67px;
+}
+
+#welcomeMain {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#welcomeMain h2 {
+    font-family: var(--hFont);
+}
+
+#welcomeMain p {
+    font-family: var(--pFont);
 }
