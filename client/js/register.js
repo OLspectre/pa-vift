@@ -2,6 +2,8 @@ import { teams } from "../../data/teams.js";
 
 let currTeam;
 const btn = document.querySelector("#registerBtn");
+console.log(btn);
+
 btn.addEventListener("click", registerUser);
 
 export function registerUser() {
@@ -17,14 +19,11 @@ export function registerUser() {
         alert("Invalid code / password");
         return;
 
-
     } else {
         console.log("Team found: ", team.id);
         updateTeam(team, teamNameInput.value)
         console.log(team);
-
-
-        changePage();
+        window.location.href = "../pages/rules.html";
     }
 }
 
@@ -40,36 +39,4 @@ function findTeam(code) {
 
 
 
-async function changePage() {
-    showLoadingAnimation();
 
-    setTimeout(() => {
-        window.location.href = "../pages/rules.html";
-    }, 5000)
-}
-
-
-
-function showLoadingAnimation() {
-    const loadingScreen = document.querySelector("div#loading");
-    const displayCount = document.querySelector("#loading div");
-
-    document.querySelector(".container").style.display = "none";
-    loadingScreen.style.display = "flex";
-
-    let i = 3;
-
-    let interval = setInterval(() => {
-        i--;
-        displayCount.textContent = i;
-
-        console.log(i);
-
-        if (i === 0) {
-            loadingScreen.textContent = "Kör!";
-            clearInterval(interval);
-        }
-
-    }, 1000)
-
-};

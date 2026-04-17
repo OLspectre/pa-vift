@@ -39,6 +39,14 @@ body {
 
 p {
     font-family: var(--pFont);
+    margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    margin: 0;
 }
 
 h1,
@@ -55,6 +63,9 @@ a {
 
 }
 
+button:active {
+    border-bottom: none;
+}
 
 .linkBTN {
     display: flex;
