@@ -1,0 +1,16 @@
+#rulesContainer {
+    display: grid;
+    grid-auto-columns: auto;
+    gap: 20px;
+}
+
+.ruleCard {
+    background: var(--cardColor);
+    border-radius: 10px;
+    padding: 14px;
+}
+
+.ruleCard h2 {
+    color: black;
+    font-family: var(--pFont);
+}

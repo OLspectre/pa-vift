@@ -10,7 +10,7 @@
 
 :root {
     --backgroundColor: #F3F9FF;
-
+    --cardColor: #cdcdcd;
     --pFont: SofiaSans;
     --pColorLight: #938C8C;
     --pLarge: 20px;
@@ -34,9 +34,16 @@ body {
 .container {
     margin-left: 16px;
     margin-right: 16px;
+    padding-bottom: 48px;
+}
+
+p {
+    font-family: var(--pFont);
 }
 
 h1,
+h2,
+h3,
 h4,
 button {
     font-family: var(--hFont);

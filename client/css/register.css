@@ -55,6 +55,13 @@ button:active {
 
 section input {
     display: block;
+    padding: 4px;
+    border: 1px solid #cdcdcd;
+}
+
+input:focus {
+    outline-style: none;
+    padding: 8px;
 }
 
 main p {
