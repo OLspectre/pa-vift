@@ -1,18 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>Document</title>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
     <link rel="stylesheet" href="../css/questMap.css">
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-    
+
+    <link rel="stylesheet" href="../css/style.css">
 </head>
+
 <body>
     <section id="mapSection">
         <div id="map"></div>
+
     </section>
+    <div id="sheet">
+        <div id="handle-area">
+            <div class="handle-bar"></div>
+        </div>
+        <div class="sheet-content">
+            <h3>Utmaning #x</h3>
+            <p>Meny beställning: Nr på menyn ska skrivas in som svar. Ex: min beställning: big mac (nr 2), mcflurry (nr
+                12), nuggets (nr 8). svar: 2128</p>
+
+            <button class="linkBTN">Svara</button>
+        </div>
+    </div>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
     <script src="../js/questMap.js"></script>
 </body>
+
 </html>

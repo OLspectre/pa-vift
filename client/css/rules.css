@@ -10,7 +10,7 @@
     padding: 14px;
 }
 
-.ruleCard h2 {
+.ruleCard h4 {
     color: black;
     font-family: var(--pFont);
     margin-bottom: 8px;

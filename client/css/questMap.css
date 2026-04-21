@@ -3,7 +3,56 @@ body {
     margin: 0;
 }
 
-html, body, #map {
+html,
+body,
+#map {
     height: 100vh;
     width: 100vw;
+}
+
+/* #map {
+    height: 85vh;
+    overflow: hidden;
+} */
+
+
+#sheet {
+    z-index: 8888;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 120px;
+    background: white;
+    border-top: 1px solid #ddd;
+    border-radius: 16px 16px 0 0;
+    user-select: none;
+}
+
+#handle-area {
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+    cursor: grab;
+}
+
+.handle-bar {
+    width: 36px;
+    height: 4px;
+    background: #ccc;
+    border-radius: 2px;
+}
+
+.sheet-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    padding: 16px;
+    text-align: center;
+    line-height: 1.5;
+}
+
+.sheet-content button {
+    width: 170px;
 }

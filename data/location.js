@@ -1,6 +1,8 @@
 export const startClue = "Erik vid havet tänker på den nya födelsen i hans gård av pengar."
 
 export const locationsData = [
+
+    
     {
         locationID: 1,
         hint: "Den gyllene måsen är nära till hands och tittar ut över vattnet",

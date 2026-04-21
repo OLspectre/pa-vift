@@ -20,6 +20,7 @@ section {
     display: flex;
     flex-direction: column;
     gap: 16px;
+    position: relative;
 }
 
 h1 {
@@ -29,7 +30,7 @@ h1 {
 h4 {
     margin: auto;
     border-bottom: 5px solid var(--hColor);
-    width: 50%;
+    width: fit-content;
     font-size: var(--h4Size);
     padding-bottom: 5px;
 }
@@ -70,4 +71,9 @@ input:focus {
     font-size: var(--pSmall);
     position: relative;
     top: 12px;
+}
+
+#errorText {
+    position: absolute;
+    bottom: -23px;
 }
