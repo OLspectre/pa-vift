@@ -6,7 +6,7 @@ body {
 .container {
     display: flex;
     flex-direction: column;
-    gap: 120px;
+    gap: 10vh;
     padding-top: 100px;
     height: 100%;
 }
@@ -55,18 +55,19 @@ button:active {
 
 section input {
     display: block;
-    padding: 4px;
-    border: 1px solid #cdcdcd;
+    padding: 8px;
+    margin: 0px;
+    border: none;
+    border-bottom: 4px solid #E3E3E3;
 }
 
 input:focus {
     outline-style: none;
-    padding: 8px;
 }
 
-main p {
+#createTeamP {
     font-family: var(--pFont);
     font-size: var(--pSmall);
     position: relative;
-    top: 20px;
+    top: 12px;
 }

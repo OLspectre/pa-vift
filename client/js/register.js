@@ -4,6 +4,9 @@ let currTeam;
 const btn = document.querySelector("#registerBtn");
 console.log(btn);
 
+const errorCreatingTeamText = document.querySelector("#errorText");
+const inputPassword = document.querySelector("#inputPassword");
+
 btn.addEventListener("click", registerUser);
 
 export function registerUser() {
@@ -16,7 +19,8 @@ export function registerUser() {
 
     if (!team) {
         console.log("fel");
-        alert("Invalid code / password");
+        errorCreatingTeamText.innerHTML = "Invalid code / password";
+        inputPassword.style.borderBottom = "3px solid red";
         return;
 
     } else {
