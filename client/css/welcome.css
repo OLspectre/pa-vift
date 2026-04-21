@@ -2,11 +2,11 @@
 
 body {
     height: 100%;
-    overflow: hidden;
+    overflow-y: scroll;
 }
 
 #welcomeHeader {
-    height: 559px;
+    height: 490px;
     width: 100vw;
     background-image: url(../media/paViftBackground.svg);
     background-position: center;
