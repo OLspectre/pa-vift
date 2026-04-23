@@ -39,9 +39,13 @@ section {
 
 #endCardContainer {
     display: none;
+    flex-direction: column;
+    gap: 32px;
 }
 
-#card {
+
+
+.card {
     background-color: #EAEAEA;
     border-bottom: 5px solid #cdcdcd;
     border-radius: 10px;
@@ -52,9 +56,11 @@ section {
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    position: relative;
 }
 
-#card p {
+.card p {
     margin: 15px 0px 25px 0px;
     font-size: var(--pMedium);
     text-align: center;
