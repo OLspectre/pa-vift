@@ -18,7 +18,7 @@ function success(pos) {
 
     const lat = pos.coords.latitude;
     const lng = pos.coords.longitude;
-    const accuracy = pos.coords.accuracy / 4;
+    const accuracy = pos.coords.accuracy;
 
 
     if (circleMarker) {
