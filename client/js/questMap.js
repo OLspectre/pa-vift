@@ -1,28 +1,72 @@
-var map = L.map('map').fitWorld();
+import { STADIA_KEY } from "./config";
 
-L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png', {
+var map = L.map('map')
+
+L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png?api_key=${STADIA_KEY}', {
     attribution: '© Stadia Maps © OpenStreetMap',
-    maxZoom: 19
+    maxZoom: 25
 }).addTo(map)
 
-map.locate({ setView: true, maxZoom: 16 });
 
-function onLocationFound(e) {
-    var radius = e.accuracy;
+let circleMarker, circle, zoomed;
 
-    L.marker(e.latlng).addTo(map)
-        .bindPopup("You are within " + radius + " meters from this point").openPopup();
+map.locate({ setView: true, maxZoom: 25 });
 
-    L.circle(e.latlng, radius).addTo(map);
+navigator.geolocation.watchPosition(success, error);
+
+function success(pos) {
+
+    const lat = pos.coords.latitude;
+    const lng = pos.coords.longitude;
+    const accuracy = pos.coords.accuracy / 4;
+
+
+    if (circleMarker) {
+        map.removeLayer(circleMarker);
+        map.removeLayer(circle);
+    }
+
+    circleMarker = L.circleMarker([lat, lng]).addTo(map)
+    circle = L.circle([lat, lng], {
+        radius: accuracy,
+        color: "#e46e27",
+        fillColor: "#e46e27",
+        fillOpacity: 0.2,
+        weight: 2
+    }).addTo(map);
+
+    if (!zoomed) {
+        zoomed = map.fitBounds(circle.getBounds());
+    }
+
+    map.setView([lat, lng]);
 }
 
-map.on('locationfound', onLocationFound);
+function error(err) {
 
-function onLocationError(e) {
-    alert(e.message);
+    if (err.code === 1) {
+        alert("Snälla tillåt platstjänster under hela upplevelsen");
+    } else {
+        alert("Tekniskt fel: Kan inte hämta platsinformation");
+    }
 }
 
-map.on('locationerror', onLocationError);
+
+// function onLocationFound(e) {
+//     var radius = e.accuracy / 4;
+
+//     L.circleMarker(e.latlng).addTo(map)
+//     // .bindPopup("You are within " + radius + " meters from this point").openPopup();
+//     L.circle(e.latlng, radius).addTo(map);
+// }
+
+// map.on('locationfound', onLocationFound);
+
+// function onLocationError(e) {
+//     alert(e.message);
+// }
+
+// map.on('locationerror', onLocationError);
 
 
 
