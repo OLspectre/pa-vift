@@ -1,8 +1,8 @@
-import { STADIA_KEY } from "./config";
+import { STADIA_KEY } from "./config.js";
 
 var map = L.map('map')
 
-L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png?api_key=${STADIA_KEY}', {
+L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png?api_key=$STADIA_KEY', {
     attribution: '© Stadia Maps © OpenStreetMap',
     maxZoom: 25
 }).addTo(map)
@@ -50,23 +50,6 @@ function error(err) {
         alert("Tekniskt fel: Kan inte hämta platsinformation");
     }
 }
-
-
-// function onLocationFound(e) {
-//     var radius = e.accuracy / 4;
-
-//     L.circleMarker(e.latlng).addTo(map)
-//     // .bindPopup("You are within " + radius + " meters from this point").openPopup();
-//     L.circle(e.latlng, radius).addTo(map);
-// }
-
-// map.on('locationfound', onLocationFound);
-
-// function onLocationError(e) {
-//     alert(e.message);
-// }
-
-// map.on('locationerror', onLocationError);
 
 
 
