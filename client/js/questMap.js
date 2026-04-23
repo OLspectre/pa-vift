@@ -41,7 +41,6 @@ function success(pos) {
 
     map.setView([lat, lng]);
 }
-
 function error(err) {
 
     if (err.code === 1) {
@@ -51,10 +50,7 @@ function error(err) {
     }
 }
 
-
-
-
-
+//  DRAGABLE SHEET SLIDER
 const sheet = document.getElementById('sheet')
 const handle = document.getElementById('handle-area')
 
@@ -87,5 +83,32 @@ document.addEventListener('touchmove', (e) => {
     sheet.style.height = Math.min(MAX_H, Math.max(MIN_H, startH + (startY - e.touches[0].clientY))) + 'px'
 }, { passive: false })
 
-document.addEventListener('mouseup', () => { dragging = false })
-document.addEventListener('touchend', () => { dragging = false })
+document.addEventListener('mouseup', () => { dragging = false });
+document.addEventListener('touchend', () => { dragging = false });
+
+
+
+const answerbtn = document.querySelector("#challenge-answer-btn");
+const overlayPopup = document.querySelector(".overlay-popup");
+
+answerbtn.addEventListener("click", (e) => {
+    overlayPopup.style.display = "flex";
+})
+
+
+const closeIcon = document.querySelector(".close-popup");
+const confirmBtn = document.querySelector(".answer-card button");
+
+closeIcon.addEventListener("click", closePopup)
+
+function closePopup() {
+    overlayPopup.style.display = "none";
+}
+
+const inputField = document.querySelector(".answer-card input");
+
+inputField.addEventListener("input", () => {
+    confirmBtn.classList.toggle("inactive", inputField.value.trim() === "")
+})
+
+

@@ -52,3 +52,28 @@ body,
 .sheet-content button {
     width: 170px;
 }
+
+
+.answer-card {
+    /* position: relative; */
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    background: var(--backgroundColor);
+    border-radius: 10px;
+    gap: 20px;
+    /* width: 100%; */
+    text-align: center;
+}
+
+.answer-card input {
+    margin: 8px 0 8px 0;
+    background-color: #EAEAEA;
+    border: 1px solid #DADADA;
+    border-radius: 4px;
+}
+
+.answer-card input:focus {
+    outline-style: solid;
+    outline-color: var(--hColor);
+}

@@ -26,9 +26,22 @@
             <p>Meny beställning: Nr på menyn ska skrivas in som svar. Ex: min beställning: big mac (nr 2), mcflurry (nr
                 12), nuggets (nr 8). svar: 2128</p>
 
-            <button class="linkBTN">Svara</button>
+            <button class="linkBTN" id="challenge-answer-btn">Svara</button>
         </div>
     </div>
+
+    <div class="overlay-popup">
+        <main class="container">
+            <div class="answer-card">
+                <img class="close-popup" src="../media/close svg.svg" alt="X to close popup">
+                <h4>Lösning på utmaningen</h4>
+                <input type="text">
+                <button class="linkBTN inactive ">Bekräfta</button>
+            </div>
+        </main>
+    </div>
+
+
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
         integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
     <script type="module" src="../js/questMap.js"></script>

@@ -36,6 +36,7 @@ body {
     margin-left: 16px;
     margin-right: 16px;
     padding-bottom: 48px;
+    width: 100%;
 }
 
 p {
@@ -96,4 +97,48 @@ button:active {
     border: none;
     border-bottom: 4px solid #A7562E;
     border-radius: 10px;
+}
+
+
+.overlay-popup {
+
+    background-color: rgba(0, 0, 0, 0.75);
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+
+input {
+    display: block;
+    padding: 8px;
+    margin: 0px;
+    border: none;
+}
+
+input:focus {
+    outline-style: none;
+}
+
+
+.close-popup {
+    width: 16px;
+    color: #ADADAD;
+    position: relative;
+    left: -8px;
+    top: -8px;
+    margin-bottom: -16px;
+}
+
+
+.inactive {
+    background-color: #EEA375;
+    border-bottom: none;
+    color: #EAEAEA;
 }
