@@ -33,17 +33,13 @@ section {
     padding-top: 75px;
 }
 
-#destinationCardContainer {
-    height: 70vh;
-}
+
 
 #endCardContainer {
     display: none;
     flex-direction: column;
     gap: 32px;
 }
-
-
 
 .card {
     background-color: #EAEAEA;
@@ -71,8 +67,26 @@ section {
     font-size: var(--pMedium);
 }
 
+#pointContainer {
+    display: flex;
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    gap: 2px;
+}
+
+#pointContainer img {
+    width: 20px;
+    height: 20px;
+}
+
+#pointContainer p {
+    margin: 0;
+}
+
 #guessBtn {
     margin: auto 0px 100px 0px;
+    position: relative;
 }
 
 #buttonContainer {
