@@ -5,32 +5,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Start</title>
+    <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/game.css">
 </head>
 
 <body>
     <img id="gameBackground" src="../media/gameBackground.svg" alt="">
     <main>
-        <section>
-            <h2 id="timer">placeholder</h2>
-            <div>
-                <button>Delmål</button>
-                <button>Slutmål</button>
+        <section id="timerAndButtonsContainer">
+            <h2 id="timer">1:46:38</h2>
+            <div id="buttonContainer">
+                <button class="selected" id="partClueBtn">Delmål</button>
+                <button id="endClueBtn">Slutmål</button>
             </div>
 
         </section>
 
-
-        <div id="card">
-            <h3>Destination 1</h3>
-            <p>lorem ipsum yada yada</p>
-            <button>Karta</button>
-        </div>
-
-
-        <section>
-            <button id="guessButton">Svara</button>
+        <section id="destinationCardContainer">
+            <div id="card">
+                <h3>Destination 1</h3>
+                <p>“Den gyllene måsen är nära till hands och tittar ut över vattnet”</p>
+                <button id="mapBtn" class="linkBTN">Karta</button>
+            </div>
+            <button id="guessBtn" class="linkBTN">Svara</button>
         </section>
+
+        
+
+        <section id="endCardContainer">
+            <div id=""></div>
+        </section>
+
+
+        
     </main>
 
     <script src="../js/game.js"></script>
