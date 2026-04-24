@@ -8,7 +8,6 @@ body {
     flex-direction: column;
     gap: 10vh;
     padding-top: 100px;
-    height: 100%;
 }
 
 header {
