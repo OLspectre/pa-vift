@@ -112,6 +112,10 @@ button:active {
     z-index: 9999;
 }
 
+.overlay-popup .container {
+    width: 100%;
+}
+
 
 input {
     display: block;
@@ -140,4 +144,37 @@ input:focus {
     background-color: #EEA375;
     border-bottom: none;
     color: #EAEAEA;
+}
+
+/*
+STYLE FOR OVERLAY POPUP CARD
+*/
+
+.answer-card {
+    display: flex;
+    flex-direction: column;
+    padding: 24px 16px;
+    background: var(--backgroundColor);
+    border-radius: 10px;
+    gap: 20px;
+    /* width: 100%; */
+    text-align: center;
+}
+
+.answer-card input {
+    margin: 8px 0 8px 0;
+    background-color: #EAEAEA;
+    border: 1px solid #DADADA;
+    border-radius: 4px;
+}
+
+.answer-card input:focus {
+    outline-style: solid;
+    outline-color: var(--hColor);
+}
+
+.titleAndInput-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 }

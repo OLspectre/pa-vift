@@ -84,6 +84,6 @@ const finishBtn = document.getElementById("finishBtn");
 finishBtn.addEventListener("click", () => {
     clearInterval(timer)
     const result = calculateTimeTaken(timeLeft)
-    console.log(result)
+    alert(result);
     // window.location.href = "/pages/gameEnd.html"
 })
