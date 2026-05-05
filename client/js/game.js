@@ -32,3 +32,58 @@ mapBtn.addEventListener("click", () => {
 
 
 
+const showTimer = document.querySelector("#timer");
+
+
+// Timer in works
+let timeLeft = 10800; // 3 hours in seconds 10800
+
+const timer = setInterval(() => {
+    timeLeft--
+
+    const hours = Math.floor(timeLeft / 3600)
+    const mins = Math.floor((timeLeft % 3600) / 60)
+    const secs = timeLeft % 60
+
+    if (timeLeft > 3600) {
+        showTimer.textContent = `${mins}:${secs.toString().padStart(2, "0")}`
+    } else if (timeLeft < 60) {
+        showTimer.textContent = `${secs.toString().padStart(2, "0")}`
+    } else {
+        showTimer.textContent = `${hours}:${mins}:${secs.toString().padStart(2, "0")}`
+    }
+
+    console.log(timeLeft)
+    if (timeLeft <= 0) {
+        clearInterval(timer) // stops the interval
+        console.log("Done!");
+        const timeTakenInMins = calculateTimeTaken(timeLeft);
+        console.log(timeTakenInMins);
+
+        // window.href --> end game screen
+    }
+
+}, 1000)
+
+
+
+
+function calculateTimeTaken(timeLeft) {
+    const timeUsed = 10800 - timeLeft;
+
+    const hours = Math.floor(timeUsed / 3600)
+    const mins = Math.floor((timeUsed % 3600) / 60)
+    const secs = timeUsed % 60
+
+    return `Time taken to complete: ${hours} hours ${mins} minutes ${secs} seconds`;
+}
+
+
+const finishBtn = document.getElementById("finishBtn");
+
+finishBtn.addEventListener("click", () => {
+    clearInterval(timer)
+    const result = calculateTimeTaken(timeLeft)
+    console.log(result)
+    // window.location.href = "/pages/gameEnd.html"
+})
