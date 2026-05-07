@@ -129,11 +129,6 @@ section {
     font-weight: 250;
 }
 
-#popupMain {
-    display: flex;
-    flex-direction: column;
-}
-
 #warningDiv {
     background-color: var(--backgroundColor);
     border-radius: 5px;
