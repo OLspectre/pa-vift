@@ -38,7 +38,7 @@ export const locationsData = [
     }, {
         locationID: 5,
         hint: "Jag är där asfalt ger plats åt löv och tystare steg, där bänkar tar över efter trafikens brus. Jag ligger där stadens sista steg blir utsikt, och där mitt namn låter som havet intill.",
-        acceptableAnswers: ["xxx"],
+        acceptableAnswers: ["öresundspark", "öresundsparken"],
         challAnswer: "x",
         challenge: "Skulpturen Vinden - man ska leta upp statyn och skriva in år."
     }
