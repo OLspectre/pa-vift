@@ -53,8 +53,13 @@ document.querySelector("#pageMain").addEventListener("click", function (e) {
     }
 })
 
+let cooldownTime = 300;
 confirmBtn.addEventListener("click", () => { 
-    validateInput(confirmBtn.id, input.value);
+    let inputOK = validateInput(confirmBtn.id, input.value);
+
+    if (!inputOK) {
+
+    }
 })
 
 closeIcon.addEventListener("click", closePopup)
