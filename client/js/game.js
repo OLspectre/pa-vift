@@ -6,13 +6,15 @@ const buttonContainer = document.querySelector("#buttonContainer")
 const partClueBtn = document.querySelector("#partClueBtn");
 const endClueBtn = document.querySelector("#endClueBtn");
 
-const guessBtn = document.querySelectorAll(".guessBtn");
 const overlayPopup = document.querySelector(".overlay-popup");
 const closeIcon = document.querySelector(".close-popup");
 const confirmBtn = document.querySelector(".answer-card button");
 const input = document.querySelector(".answer-card input");
 const popupMain = document.querySelector("#popupMain");
 const warningDiv = document.querySelector("#warningDiv");
+
+const guessEndBtn = document.querySelector("button#guessEndBtn");
+
 
 const partCardContainner = document.querySelector("#destinationCardContainer");
 const endCardContainer = document.querySelector("#endCardContainer");
@@ -24,19 +26,26 @@ const showTimer = document.querySelector("#timer");
 
 
 
-const cooldownStart = localStorage.getItem("cooldownStart"); // Cooldown timer
+const cooldownStart = localStorage.getItem("cooldownStart");
+console.log(cooldownStart);
+// Cooldown timer
 const team = JSON.parse(localStorage.getItem("team"));
 if (!team.startTime) {
+    console.log("timer startar");
     team.startTime = Date.now();
     localStorage.setItem("team", JSON.stringify(team)); //Uppdaterar objektet i localstorage
 }
 
-if (cooldownStart) {
-    inputField.disabled = true
-    startCooldown(confirmBtn, () => {
-        inputField.disabled = false
-    })
-}
+// if (cooldownStart) {
+//     guessEndBtn.disabled = true
+//     guessEndBtn.classList.add("inactive")
+//     startCooldown(guessEndBtn, () => {
+//         guessEndBtn.disabled = false;
+//         guessEndBtn.classList.remove("inactive");
+//         guessEndBtn.textContent = "Svara";
+
+//     })
+// }
 
 console.log("Team playing", team);
 
@@ -78,7 +87,6 @@ function closePopup() {
     warningDiv.style.display = "none";
 }
 
-
 inputField.addEventListener("input", () => {
     confirmBtn.classList.toggle("inactive", inputField.value.trim() === "")
 })
@@ -87,11 +95,12 @@ mapBtn.addEventListener("click", () => {
     window.location.href = "../pages/questMap.html";
 })
 
-
-
 const timer = startTimer(showTimer, () => {
     window.location.href = "/pages/gameEnd.html?result=dnf"
 })
+
+console.log(timer);
+
 
 
 

@@ -8,6 +8,7 @@ console.log("Team playing", team);
 const currLocation = locationsData.find(l => l.locationID === team.currLocation);
 console.log(currLocation);
 
+const guessEndBtn = document.querySelector("#guessEndBtn");
 const confirmBtn = document.querySelector(".answer-card button");
 const inputField = document.querySelector(".answer-card input");
 
@@ -15,9 +16,8 @@ confirmBtn.addEventListener("click", () => {
     const answerType = confirmBtn.id;
     const input = inputField.value;
 
-    if (!confirmBtn.classList.contains("inactive")) {
-        validateInput(answerType, input)
-    }
+    validateInput(answerType, input)
+
 
 });
 
@@ -49,11 +49,15 @@ export function validateInput(answerType, userInput) {
             // team.hintsUnlocked.push()
             // updateUI();    // Update game with new main clue and small clue
         } else {
+            document.querySelector(".overlay-popup").style.display = "none";
             console.log("wrong guess");
-            inputField.disabled = true
-            confirmBtn.classList.add("inactive");
-            startCooldown(confirmBtn, () => {
-                inputField.disabled = false
+            guessEndBtn.classList.add("inactive");
+            guessEndBtn.disabled = true;
+            startCooldown(guessEndBtn, () => {
+                guessEndBtn.disabled = false;
+                guessEndBtn.classList.remove("inactive");
+                guessEndBtn.textContent = "Svara";
+
             })
         }
 

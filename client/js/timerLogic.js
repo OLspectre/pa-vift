@@ -19,7 +19,7 @@ export function startTimer(showTimer, onDone) {
         const mins = Math.floor((timeLeft % 3600) / 60)
         const secs = timeLeft % 60
 
-        if (timeLeft > 3600) {
+        if (timeLeft >= 3600) {
             showTimer.textContent = `${hours}:${mins}:${secs.toString().padStart(2, "0")}`
         } else if (timeLeft < 60) {
             showTimer.textContent = `${secs.toString().padStart(2, "0")}`
@@ -36,7 +36,6 @@ export function startTimer(showTimer, onDone) {
         }
 
     }, 1000)
-
     return timer;
 }
 
@@ -56,11 +55,12 @@ export function calculateTimeTaken(timeLeft) {
 
 // COOLDOWN TIMER 
 export function startCooldown(showElement, onComplete) {
+
     localStorage.setItem("cooldownStart", Date.now());
 
     const cooldown = setInterval(() => {
         const elapsed = Math.floor((Date.now() - localStorage.getItem("cooldownStart")) / 1000)
-        const cooldownLeft = Math.max(0, 300 - elapsed)
+        const cooldownLeft = Math.max(0, 20 - elapsed)
 
         const mins = Math.floor(cooldownLeft / 60)
         const secs = cooldownLeft % 60
