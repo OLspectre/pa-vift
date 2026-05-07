@@ -1,4 +1,4 @@
-import { validateInput } from "/gameLogic.js"
+import { validateInput } from "../js/gameLogic.js"
 
 const team = JSON.parse(localStorage.getItem("team"));
 console.log("Team playing", team);
