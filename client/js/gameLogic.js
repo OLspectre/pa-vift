@@ -17,8 +17,6 @@ submitbtn.addEventListener("click", () => {
     validateInput(answerType, input)
 });
 
-
-
 export function validateInput(answerType, userInput) {
     console.log("checking input");
     console.log(answerType);
@@ -31,7 +29,7 @@ export function validateInput(answerType, userInput) {
         if (correct) {
             alert("Correct Answer");
             team.currLocation++;
-            team.hintsUnlocked.push()
+            // team.hintsUnlocked.push()
             // updateUI();    // Update game with new main clue and small clue
         } else {
             alert("wrong");
@@ -39,19 +37,35 @@ export function validateInput(answerType, userInput) {
     }
     if (answerType === "main") {
         // Check userInput with main clue answer
-        checkMainClue(userInput);
+        const correct = checkMainClue(userInput);
+
+        if (correct) {
+            alert("Correct Answer");
+            endGame();
+            // team.hintsUnlocked.push()
+            // updateUI();    // Update game with new main clue and small clue
+        } else {
+            alert("wrong");
+        }
 
     }
     if (answerType === "destination") {
         // Check userInput with destination clue answer  
-        checkClue(userInput);
+        const correct = checkClue(userInput);
+
+        if (correct) {
+            alert("Correct Answer");
+            // team.hintsUnlocked.push()
+            // updateUI();    // Update game with new main clue and small clue
+        } else {
+            alert("wrong");
+        }
 
     }
 }
 
 
 function checkClue(answer) {
-
     const corrAnswers = currLocation.acceptableAnswers;
 
     for (let a of corrAnswers) {
