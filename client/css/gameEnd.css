@@ -1,7 +1,14 @@
-header {
-    height: 40vh;
+#winOrLoseSection {
+    height: 20vh;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    align-items: center;
+    justify-content: center;
 }
 
-main {
-    height: 60vh;
+#leaderboard {
+    display: grid;
+    grid-template-columns: 2fr 2fr 1fr;
+    border: 3px solid var(--hColor);
 }
