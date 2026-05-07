@@ -1,4 +1,4 @@
-import { startClue } from "./location";
+import { startClue } from "./location.js";
 
 export const teams = [{
     id: 1,
