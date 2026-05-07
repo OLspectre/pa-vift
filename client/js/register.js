@@ -34,7 +34,9 @@ export function registerUser() {
 function updateTeam(team, name) {
     team.name = name;
     currTeam = team;
-    // Update localstorage with current user / team
+
+    localStorage.setItem("team", currTeam);
+
 }
 
 function findTeam(code) {

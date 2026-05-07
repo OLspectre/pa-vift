@@ -1,4 +1,10 @@
+const currTeam = localStorage.getItem("team");
+
+console.log("Team playing", currTeam);
+
+
 const buttonContainer = document.querySelector("#buttonContainer")
+
 const partClueBtn = document.querySelector("#partClueBtn");
 const endClueBtn = document.querySelector("#endClueBtn");
 
@@ -46,11 +52,13 @@ const timer = setInterval(() => {
     const secs = timeLeft % 60
 
     if (timeLeft > 3600) {
-        showTimer.textContent = `${mins}:${secs.toString().padStart(2, "0")}`
+        showTimer.textContent = `${hours}:${mins}:${secs.toString().padStart(2, "0")}`
+
     } else if (timeLeft < 60) {
         showTimer.textContent = `${secs.toString().padStart(2, "0")}`
     } else {
-        showTimer.textContent = `${hours}:${mins}:${secs.toString().padStart(2, "0")}`
+        showTimer.textContent = `${mins}:${secs.toString().padStart(2, "0")}`
+
     }
 
     console.log(timeLeft)
