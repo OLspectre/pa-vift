@@ -25,7 +25,7 @@ buttonContainer.addEventListener("click", function (e) {
         endClueBtn.classList.toggle("selected");
         partClueBtn.classList.toggle("selected");
 
-        if (e.target = endClueBtn) {
+        if (e.target == endClueBtn) {
             partCardContainner.style.display = "none"
             endCardContainer.style.display = "flex"
         }
