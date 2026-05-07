@@ -1,5 +1,5 @@
 import { validateInput } from "../js/gameLogic.js";
-import { startTimer, calculateTimeTaken, startCooldown } from "./timerLogic.js";
+import { startTimer, calculateTimeTaken, startCooldown, resumeCooldown } from "./timerLogic.js";
 
 const buttonContainer = document.querySelector("#buttonContainer")
 
@@ -28,14 +28,25 @@ const showTimer = document.querySelector("#timer");
 
 const cooldownStart = localStorage.getItem("cooldownStart");
 console.log(cooldownStart);
-// Cooldown timer
+
+if (cooldownStart) {
+    console.log(true);
+
+    guessEndBtn.disabled = true;
+    guessEndBtn.classList.add("inactive");
+    resumeCooldown(guessEndBtn, () => {
+        guessEndBtn.disabled = false;
+        guessEndBtn.classList.remove("inactive");
+        guessEndBtn.textContent = "Svara";
+    })
+}
+
 const team = JSON.parse(localStorage.getItem("team"));
 
 if (!team.startTime) {
     console.log("timer startar");
     showTimer.textContent = "3:00:00";
     team.startTime = Date.now();
-    console.log("körs nu");
 
     localStorage.setItem("team", JSON.stringify(team)); //Uppdaterar objektet i localstorage
 }
@@ -95,7 +106,6 @@ mapBtn.addEventListener("click", () => {
 
 
 
-console.log(timer);
 
 
 

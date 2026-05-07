@@ -15,13 +15,10 @@ export function startTimer(showTimer, onDone) {
 
     const timer = setInterval(() => {
         const timeLeft = getTimeLeft();
-        console.log(timeLeft);
-
 
         const hours = Math.floor(timeLeft / 3600)
         const mins = Math.floor((timeLeft % 3600) / 60)
         const secs = timeLeft % 60
-        console.log(`${hours}:${mins}:${secs.toString().padStart(2, "0")}`);
         if (timeLeft >= 3600) {
             showTimer.textContent = `${hours}:${mins}:${secs.toString().padStart(2, "0")}`
         } else if (timeLeft < 60) {
@@ -58,24 +55,31 @@ export function calculateTimeTaken(timeLeft) {
 
 // COOLDOWN TIMER 
 export function startCooldown(showElement, onComplete) {
+    localStorage.setItem("cooldownStart", Date.now())
+    runCooldown(showElement, onComplete)
+}
 
-    localStorage.setItem("cooldownStart", Date.now());
+export function resumeCooldown(showElement, onComplete) {
+    const cooldownStart = localStorage.getItem("cooldownStart")
+    console.log("64", cooldownStart);
 
+    if (!cooldownStart) return // ingen aktiv cooldown
+    runCooldown(showElement, onComplete)
+}
+
+function runCooldown(showElement, onComplete) {
     const cooldown = setInterval(() => {
         const elapsed = Math.floor((Date.now() - localStorage.getItem("cooldownStart")) / 1000)
-        const cooldownLeft = Math.max(0, 20 - elapsed)
-
+        const cooldownLeft = Math.max(0, 25 - elapsed)
         const mins = Math.floor(cooldownLeft / 60)
         const secs = cooldownLeft % 60
-        // if (cooldownLeft < 60) showElement.textContent = `${secs.toString().padStart(2, "0")}`
         showElement.textContent = `${mins}:${secs.toString().padStart(2, "0")}`
 
         if (cooldownLeft <= 0) {
             clearInterval(cooldown)
-            localStorage.removeItem("cooldownStart");
-            onComplete() // aktivera input/knapp igen
+            localStorage.removeItem("cooldownStart")
+            onComplete()
         }
     }, 1000)
-
     return cooldown
 }
