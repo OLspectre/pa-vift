@@ -46,8 +46,6 @@ buttonContainer.addEventListener("click", function (e) {
 })
 
 document.querySelector("#pageMain").addEventListener("click", function (e) {
-    console.log(e);
-
     if (e.target.id === "guessPartBtn") {
         overlayPopup.style.display = "flex";
         confirmBtn.id = "destination"
