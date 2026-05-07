@@ -1,6 +1,6 @@
 import { teams } from "../../data/teams.js"
 
-// const team = JSON.parse(localStorage.getItem("team"));
+const team = JSON.parse(localStorage.getItem("team"));
 
 const leaderboard = document.querySelector("#leaderboard");
 
