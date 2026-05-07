@@ -7,6 +7,14 @@ const buttonContainer = document.querySelector("#buttonContainer")
 const partClueBtn = document.querySelector("#partClueBtn");
 const endClueBtn = document.querySelector("#endClueBtn");
 
+const guessBtn = document.querySelectorAll(".guessBtn");
+const overlayPopup = document.querySelector(".overlay-popup");
+const closeIcon = document.querySelector(".close-popup");
+const confirmBtn = document.querySelector(".answer-card button");
+const popupMain = document.querySelector("#popupMain");
+const warningDiv = document.querySelector("#warningDiv");
+
+
 const partCardContainner = document.querySelector("#destinationCardContainer");
 const endCardContainer = document.querySelector("#endCardContainer");
 
@@ -30,6 +38,29 @@ buttonContainer.addEventListener("click", function (e) {
     }
 })
 
+document.querySelector("#pageMain").addEventListener("click", function (e) {
+    console.log(e);
+    
+    if (e.target.id === "guessPartBtn") overlayPopup.style.display = "flex";
+    if (e.target.id === "guessEndBtn") {
+        warningDiv.style.display = "block";
+        overlayPopup.style.display = "flex";
+    }
+})
+
+
+closeIcon.addEventListener("click", closePopup)
+
+function closePopup() {
+    overlayPopup.style.display = "none";
+    warningDiv.style.display = "none";
+}
+
+const inputField = document.querySelector(".answer-card input");
+
+inputField.addEventListener("input", () => {
+    confirmBtn.classList.toggle("inactive", inputField.value.trim() === "")
+})
 
 mapBtn.addEventListener("click", () => {
     window.location.href = "../pages/questMap.html";

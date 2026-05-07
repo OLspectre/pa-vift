@@ -12,7 +12,7 @@ body {
     z-index: -1;
 }
 
-main {
+#pageMain {
     display: flex;
     flex-direction: column;
     margin: 0px 16px 0px 16px;
@@ -86,7 +86,7 @@ section {
     margin: 0;
 }
 
-#guessBtn {
+.guessBtn {
     margin: auto 0px 100px 0px;
     position: relative;
 }
@@ -127,4 +127,19 @@ section {
     font-size: var(--h2Size);
     color: black;
     font-weight: 250;
+}
+
+#popupMain {
+    display: flex;
+    flex-direction: column;
+}
+
+#warningDiv {
+    background-color: var(--backgroundColor);
+    border-radius: 5px;
+    margin-bottom: 32px;
+    width: 40vw;
+    padding: 16px;
+    font-size: var(--pSmall);
+    display: none;
 }
