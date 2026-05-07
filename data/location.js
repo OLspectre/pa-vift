@@ -15,7 +15,7 @@ export const locationsData = [
         locationID: 2,
         hint: "När solen går ner vaknar huset till liv. Fjärdedelar av ljud. Här stiger ljudet våning för våning. Från golv till golv förändras genren.",
         acceptableAnswers: ["etage", "étage"],
-        challenge: "En lapp sitter uppsatt utanför Etage, leta upp den…",
+        challenge: "En lapp sitter uppsatt på en stolpe utanför Etage, leta upp den…",
         challAnswer: "Alla vill till himlen men ingen vill dö",
         mainClueHint: "Jag står där historien sitter i vägg, men jag är inte levande – ändå full av skägg. Här kan du resa i tid utan att gå, och möta både nutid och det som var då.",
 
