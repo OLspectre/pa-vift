@@ -43,7 +43,6 @@ const showTimer = document.querySelector("#timer");
 
 // Timer in works
 let timeLeft = 10800; // 3 hours in seconds 10800
-
 const timer = setInterval(() => {
     timeLeft--
 
@@ -53,14 +52,12 @@ const timer = setInterval(() => {
 
     if (timeLeft > 3600) {
         showTimer.textContent = `${hours}:${mins}:${secs.toString().padStart(2, "0")}`
-
     } else if (timeLeft < 60) {
         showTimer.textContent = `${secs.toString().padStart(2, "0")}`
     } else {
         showTimer.textContent = `${mins}:${secs.toString().padStart(2, "0")}`
 
     }
-
     console.log(timeLeft)
     if (timeLeft <= 0) {
         clearInterval(timer) // stops the interval

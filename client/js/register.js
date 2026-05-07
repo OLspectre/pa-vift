@@ -1,6 +1,5 @@
 import { teams } from "../../data/teams.js";
 
-let currTeam;
 const btn = document.querySelector("#registerBtn");
 console.log(btn);
 
