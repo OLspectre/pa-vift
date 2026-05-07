@@ -59,8 +59,13 @@ document.querySelector("#pageMain").addEventListener("click", function (e) {
     }
 })
 
-confirmBtn.addEventListener("click", () => {
-    validateInput(confirmBtn.id, input.value);
+let cooldownTime = 300;
+confirmBtn.addEventListener("click", () => { 
+    let inputOK = validateInput(confirmBtn.id, input.value);
+
+    if (!inputOK) {
+
+    }
 })
 
 closeIcon.addEventListener("click", closePopup)

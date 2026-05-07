@@ -45,6 +45,7 @@ export function validateInput(answerType, userInput) {
             // updateUI();    // Update game with new main clue and small clue
         } else {
             alert("wrong");
+            return true;
         }
 
     }
