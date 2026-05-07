@@ -14,7 +14,7 @@ export const locationsData = [
     {
         locationID: 2,
         hint: "När solen går ner vaknar huset till liv. Fjärdedelar av ljud. Här stiger ljudet våning för våning. Från golv till golv förändras genren.",
-        acceptableAnswers: ["etage"],
+        acceptableAnswers: ["etage", "étage"],
         challenge: "",
         challAnswer: "x",
         mainClueHint: "Jag står där historien sitter i vägg, men jag är inte levande – ändå full av skägg. Här kan du resa i tid utan att gå, och möta både nutid och det som var då.",

@@ -33,7 +33,9 @@ section {
     padding-top: 75px;
 }
 
-
+#destinationCardContainer {
+    gap: 150px;
+}
 
 #endCardContainer {
     display: none;
