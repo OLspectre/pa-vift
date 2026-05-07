@@ -1,14 +1,12 @@
 export const startClue = "Erik vid havet tänker på den nya födelsen i hans gård av pengar."
 
 export const locationsData = [
-
-
     {
         locationID: 1,
         hint: "Den gyllene måsen är nära till hands och tittar ut över vattnet",
         acceptableAnswers: ["McDonalds anna lindh plats", "anna lindh plats McDonalds", "McDonalds anna lindhs plats", "anna lindhs plats McDonalds", "McDonalds anna linds plats", "anna linds plats McDonalds"],
         challenge: "Meny beställning: Nr på menyn ska skrivas in som svar. Ex: min beställning: big mac (nr 2), mcflurry (nr 12), nuggets (nr 8). svar: 2128",
-        challAnswer: "x",
+        challAnswer: "12345",
         mainClueHint: "Vi lämnar fast mark och närmar oss något vars namn skulle kunna beskriva en helt vanlig bostad, men där alla har känt sig långt ifrån hemma."
     },
     {
@@ -43,3 +41,9 @@ export const locationsData = [
         challenge: "Skulpturen Vinden - man ska leta upp statyn och skriva in år."
     }
 ];
+
+const endLocation =
+{
+    acceptableAnswers: ["malmö hus", "malmö hus slott", "malmö slott"],
+    finalChallenge: "Beskriver vad de gör på sista platsen"
+}

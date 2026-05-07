@@ -1,6 +1,5 @@
-const currTeam = localStorage.getItem("team");
-
-console.log("Team playing", currTeam);
+const team = JSON.parse(localStorage.getItem("team"));
+console.log("Team playing", team);
 
 
 const buttonContainer = document.querySelector("#buttonContainer")

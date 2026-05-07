@@ -1,33 +1,40 @@
-// Main logic for checking anwers and results.
+import { locationsData } from "../../data/location.js";
 
-import { use } from "react";
-import { locationsData } from "../../data/location";
+const team = JSON.parse(localStorage.getItem("team"));
+console.log("Team playing", team);
 
-const currLocation = locationsData.find(l => l.locationID === currentTeam.currLocation);
-
-// localstorage team:::::
-
-// const currentTeam = x;
+team.currLocation = 1;
+const currLocation = locationsData.find(l => l.locationID === team.currLocation);
+console.log(currLocation);
 
 const submitbtn = document.querySelector(".answer-card button");
+const inputField = document.querySelector(".answer-card input");
 
+submitbtn.addEventListener("click", () => {
+    const answerType = submitbtn.id;
+    const input = inputField.value;
 
-
+    validateInput(answerType, input)
+});
 
 
 
 function validateInput(answerType, userInput) {
+    console.log("checking input");
+    console.log(answerType);
+    console.log(userInput);
+
 
     if (answerType === "challenge") {
         // Check userInput with challenge answer
-
         const correct = checkChallengeCode(userInput);
-
         if (correct) {
             console.log("Correct Answer");
-
-            // updateTeam();  // Update team location
-            // updateUI();    // Update game with new main clue and small clue
+            team.currLocation++;
+            team.hintsUnlocked.push()
+                        // updateUI();    // Update game with new main clue and small clue
+        } else {
+            console.log("wrong");
         }
     }
     if (answerType === "main") {
@@ -62,10 +69,9 @@ function checkMainClue(answer) {
 
 
 function checkChallengeCode(answer) {
-    const corrMainAnwers = endLocation.acceptableAnswers
-    const corrAnswers = currLocation.acceptableAnswers;
+    const corrAnswers = locationsData.map(d => d.challAnswer);
+    console.log(corrAnswers);
+    let locationN = team.currLocation - 1;
 
-    for (let a of corrAnswers) {
-        if (a.toLowerCase === answer.toLowerCase) return true;
-    }
+    return corrAnswers[locationN].toLocaleLowerCase() === answer.toLocaleLowerCase();
 }

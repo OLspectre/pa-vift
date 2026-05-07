@@ -32,9 +32,11 @@ export function registerUser() {
 
 function updateTeam(team, name) {
     team.name = name;
-    currTeam = team;
+    localStorage.setItem("team", JSON.stringify(team));
 
-    localStorage.setItem("team", currTeam);
+    // const currentTeam = JSON.parse(localStorage.getItem("team"));
+    // console.log(currentTeam);
+
 
 }
 
