@@ -2,6 +2,7 @@
 
 import { use } from "react";
 import { locationsData } from "../../data/location";
+import { teams } from "../../data/teams";
 
 const currLocation = locationsData.find(l => l.locationID === currentTeam.currLocation);
 

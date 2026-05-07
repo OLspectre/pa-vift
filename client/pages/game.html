@@ -11,7 +11,7 @@
 
 <body>
     <img id="gameBackground" src="../media/gameBackground.svg" alt="">
-    <main class="container">
+    <main id="pageMain" class="container">
         <section id="timerAndButtonsContainer">
             <h2 id="timer"></h2>
             <div id="buttonContainer">
@@ -28,7 +28,7 @@
                 <p>“Den gyllene måsen är nära till hands och tittar ut över vattnet”</p>
                 <button id="mapBtn" class="linkBTN">Karta</button>
             </div>
-            <button id="guessBtn" class="linkBTN">Svara</button>
+            <button id="guessPartBtn" class="linkBTN guessBtn">Svara</button>
         </section>
 
 
@@ -42,12 +42,23 @@
                 <h3>Ledtråd</h3>
                 <p>“Erik vid havet tänker på den nya födelsen i hans gård av pengar.”</p>
             </div>
-            <button id="guessBtn" class="linkBTN">Svara</button>
+            <button id="guessEndBtn" class="linkBTN guessBtn">Svara</button>
         </section>
-
-
-
     </main>
+    <div class="overlay-popup">
+        <main id="popupMain" class="container">
+            <div id="warningDiv">VARNING: En felaktig gissning låser svarsknappen för huvudgåtan i 5 minuter</div>
+            <div class="answer-card">
+                <img class="close-popup" src="../media/close svg.svg" alt="X to close popup">
+                <div class="titleAndInput-container">
+                    <h4>Lösning på gåtan</h4>
+                    <input type="text">
+                </div>
+
+                <button class="linkBTN inactive ">Bekräfta</button>
+            </div>
+        </main>
+    </div>
 
     <script src="../js/game.js"></script>
 </body>
