@@ -129,13 +129,24 @@ section {
     font-weight: 250;
 }
 
+/* 
 #warningDiv {
     background-color: var(--backgroundColor);
     border-radius: 5px;
     margin-bottom: 32px;
-    width: 40vw;
-    padding: 16px;
+    width: fit-content;
+    padding: 8px;
     font-size: var(--pSmall);
     font-family: var(--pFont);
     display: none;
+} */
+
+#warningDiv {
+    font-size: var(--pSmall);
+    font-family: var(--pFont);
+}
+
+#warningDiv span {
+    font-weight: bolder;
+    /* display: block; */
 }

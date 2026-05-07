@@ -36,17 +36,6 @@ if (!team.startTime) {
     localStorage.setItem("team", JSON.stringify(team)); //Uppdaterar objektet i localstorage
 }
 
-// if (cooldownStart) {
-//     guessEndBtn.disabled = true
-//     guessEndBtn.classList.add("inactive")
-//     startCooldown(guessEndBtn, () => {
-//         guessEndBtn.disabled = false;
-//         guessEndBtn.classList.remove("inactive");
-//         guessEndBtn.textContent = "Svara";
-
-//     })
-// }
-
 console.log("Team playing", team);
 
 
@@ -85,6 +74,7 @@ closeIcon.addEventListener("click", closePopup)
 function closePopup() {
     overlayPopup.style.display = "none";
     warningDiv.style.display = "none";
+    inputField.value = "";
 }
 
 inputField.addEventListener("input", () => {
