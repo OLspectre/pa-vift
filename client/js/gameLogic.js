@@ -19,7 +19,7 @@ submitbtn.addEventListener("click", () => {
 
 
 
-function validateInput(answerType, userInput) {
+export function validateInput(answerType, userInput) {
     console.log("checking input");
     console.log(answerType);
     console.log(userInput);
@@ -29,12 +29,12 @@ function validateInput(answerType, userInput) {
         // Check userInput with challenge answer
         const correct = checkChallengeCode(userInput);
         if (correct) {
-            console.log("Correct Answer");
+            alert("Correct Answer");
             team.currLocation++;
             team.hintsUnlocked.push()
-                        // updateUI();    // Update game with new main clue and small clue
+            // updateUI();    // Update game with new main clue and small clue
         } else {
-            console.log("wrong");
+            alert("wrong");
         }
     }
     if (answerType === "main") {
