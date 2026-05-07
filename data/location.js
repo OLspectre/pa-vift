@@ -7,7 +7,8 @@ export const locationsData = [
         acceptableAnswers: ["McDonalds anna lindh plats", "anna lindh plats McDonalds", "McDonalds anna lindhs plats", "anna lindhs plats McDonalds", "McDonalds anna linds plats", "anna linds plats McDonalds"],
         challenge: "Här är min beställning: Big Mac mål, 4 bitar chicken nuggets och en sundae utan topping.",
         challAnswer: "x",
-        mainClueHint: "Vi lämnar fast mark och närmar oss något vars namn skulle kunna beskriva en helt vanlig bostad, men där alla har känt sig långt ifrån hemma."
+        mainClueHint: "Vi lämnar fast mark och närmar oss något vars namn skulle kunna beskriva en helt vanlig bostad, men där alla har känt sig långt ifrån hemma.",
+        pinPoint: [55.609215923055416, 12.996340692043304]
     },
     {
         locationID: 2,

@@ -51,6 +51,26 @@ function error(err) {
     }
 }
 
+
+// PLACERA PIN
+map.on('click', (e) => {
+    const { lat, lng } = e.latlng
+    console.log(lat, lng)
+    placePin(lat, lng)
+})
+function placePin(dLat, dLng) { // posData blir ett objekt [xx.xx, yy.yy] --> locationx.pinData. Anropas vid korrekt location gissning
+
+    let destinationPin = L.circleMarker([dLat, dLng]).addTo(map)
+    circle = L.circle([dLat, dLng], {
+        radius: accuracy,
+        color: "#e46e27",
+        fillColor: "#e46e27",
+        fillOpacity: 0.2,
+        weight: 2
+    }).addTo(map);
+}
+
+
 //  DRAGABLE SHEET SLIDER
 const sheet = document.getElementById('sheet')
 const handle = document.getElementById('handle-area')
