@@ -3,7 +3,6 @@ import { locationsData } from "../../data/location.js";
 const team = JSON.parse(localStorage.getItem("team"));
 console.log("Team playing", team);
 
-team.currLocation = 1;
 const currLocation = locationsData.find(l => l.locationID === team.currLocation);
 console.log(currLocation);
 
