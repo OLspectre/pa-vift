@@ -12,6 +12,7 @@ const guessBtn = document.querySelectorAll(".guessBtn");
 const overlayPopup = document.querySelector(".overlay-popup");
 const closeIcon = document.querySelector(".close-popup");
 const confirmBtn = document.querySelector(".answer-card button");
+const input = document.querySelector(".answer-card input");
 const popupMain = document.querySelector("#popupMain");
 const warningDiv = document.querySelector("#warningDiv");
 
@@ -52,7 +53,9 @@ document.querySelector("#pageMain").addEventListener("click", function (e) {
     }
 })
 
-confirmBtn.addEventListener("click", validateInput)
+confirmBtn.addEventListener("click", () => { 
+    validateInput(confirmBtn.id, input.value);
+})
 
 closeIcon.addEventListener("click", closePopup)
 
