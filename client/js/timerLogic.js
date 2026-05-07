@@ -1,9 +1,10 @@
-const team = JSON.parse(localStorage.getItem("team"));
 
 
 const TOTAL_TIME = 10800;
 
 export function getTimeLeft() {
+    const team = JSON.parse(localStorage.getItem("team"));
+
     const elapsed = Math.floor((Date.now() - team.startTime) / 1000);
     return Math.max(0, TOTAL_TIME - elapsed);
 }
@@ -14,11 +15,13 @@ export function startTimer(showTimer, onDone) {
 
     const timer = setInterval(() => {
         const timeLeft = getTimeLeft();
+        console.log(timeLeft);
+
 
         const hours = Math.floor(timeLeft / 3600)
         const mins = Math.floor((timeLeft % 3600) / 60)
         const secs = timeLeft % 60
-
+        console.log(`${hours}:${mins}:${secs.toString().padStart(2, "0")}`);
         if (timeLeft >= 3600) {
             showTimer.textContent = `${hours}:${mins}:${secs.toString().padStart(2, "0")}`
         } else if (timeLeft < 60) {

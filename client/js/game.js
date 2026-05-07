@@ -30,13 +30,21 @@ const cooldownStart = localStorage.getItem("cooldownStart");
 console.log(cooldownStart);
 // Cooldown timer
 const team = JSON.parse(localStorage.getItem("team"));
+
 if (!team.startTime) {
     console.log("timer startar");
+    showTimer.textContent = "3:00:00";
     team.startTime = Date.now();
+    console.log("körs nu");
+
     localStorage.setItem("team", JSON.stringify(team)); //Uppdaterar objektet i localstorage
 }
+console.log("Team info:", team);
 
-console.log("Team playing", team);
+const timer = startTimer(showTimer, () => {
+    window.location.href = "/pages/gameEnd.html?result=dnf"
+})
+
 
 
 buttonContainer.addEventListener("click", function (e) {
@@ -85,9 +93,7 @@ mapBtn.addEventListener("click", () => {
     window.location.href = "../pages/questMap.html";
 })
 
-const timer = startTimer(showTimer, () => {
-    window.location.href = "/pages/gameEnd.html?result=dnf"
-})
+
 
 console.log(timer);
 
