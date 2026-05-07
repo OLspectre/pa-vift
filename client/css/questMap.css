@@ -52,3 +52,21 @@ body,
 .sheet-content button {
     width: 170px;
 }
+
+
+#mapSection button {
+    width: 20%;
+    position: absolute;
+    z-index: 9999;
+    top: 80px;
+    left: 16px;
+    font-size: var(--pMedium);
+}
+
+#timer {
+    position: absolute;
+    z-index: 9999;
+    width: 100%;
+    text-align: center;
+    top: 50px;
+}

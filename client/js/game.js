@@ -1,7 +1,13 @@
-import { validateInput } from "../js/gameLogic.js"
+import { validateInput } from "../js/gameLogic.js";
+import { startTimer, calculateTimeTaken } from "./timerLogic.js";
 
 const team = JSON.parse(localStorage.getItem("team"));
+if (!team.startTime) {
+    team.startTime = Date.now();
+    localStorage.setItem("team", JSON.stringify(team)); //Uppdaterar objektet i localstorage
+}
 console.log("Team playing", team);
+
 
 const buttonContainer = document.querySelector("#buttonContainer")
 
@@ -41,11 +47,11 @@ buttonContainer.addEventListener("click", function (e) {
 
 document.querySelector("#pageMain").addEventListener("click", function (e) {
     console.log(e);
-    
+
     if (e.target.id === "guessPartBtn") {
         overlayPopup.style.display = "flex";
         confirmBtn.id = "destination"
-    } 
+    }
     if (e.target.id === "guessEndBtn") {
         warningDiv.style.display = "block";
         overlayPopup.style.display = "flex";
@@ -53,7 +59,7 @@ document.querySelector("#pageMain").addEventListener("click", function (e) {
     }
 })
 
-confirmBtn.addEventListener("click", () => { 
+confirmBtn.addEventListener("click", () => {
     validateInput(confirmBtn.id, input.value);
 })
 
@@ -75,58 +81,21 @@ mapBtn.addEventListener("click", () => {
 })
 
 
-
+const finishBtn = document.getElementById("finishBtn");
 const showTimer = document.querySelector("#timer");
 
-
-// Timer in works
-let timeLeft = 10800; // 3 hours in seconds 10800
-const timer = setInterval(() => {
-    timeLeft--
-
-    const hours = Math.floor(timeLeft / 3600)
-    const mins = Math.floor((timeLeft % 3600) / 60)
-    const secs = timeLeft % 60
-
-    if (timeLeft > 3600) {
-        showTimer.textContent = `${hours}:${mins}:${secs.toString().padStart(2, "0")}`
-    } else if (timeLeft < 60) {
-        showTimer.textContent = `${secs.toString().padStart(2, "0")}`
-    } else {
-        showTimer.textContent = `${mins}:${secs.toString().padStart(2, "0")}`
-
-    }
-    console.log(timeLeft)
-    if (timeLeft <= 0) {
-        clearInterval(timer) // stops the interval
-        console.log("Done!");
-        const timeTakenInMins = calculateTimeTaken(timeLeft);
-        console.log(timeTakenInMins);
-
-        // window.href --> end game screen
-    }
-
-}, 1000)
+const timer = startTimer(showTimer, () => {
+    window.location.href = "/pages/gameEnd.html?result=dnf"
+})
 
 
-
-
-function calculateTimeTaken(timeLeft) {
-    const timeUsed = 10800 - timeLeft;
-
-    const hours = Math.floor(timeUsed / 3600)
-    const mins = Math.floor((timeUsed % 3600) / 60)
-    const secs = timeUsed % 60
-
-    return `Time taken to complete: ${hours} hours ${mins} minutes ${secs} seconds`;
-}
-
-
-const finishBtn = document.getElementById("finishBtn");
 
 finishBtn.addEventListener("click", () => {
     clearInterval(timer)
-    const result = calculateTimeTaken(timeLeft)
-    alert(result);
+    const result = calculateTimeTaken();
+    team.finalTime = result;
+    localStorage.setItem("team", JSON.stringify(team));//Uppdaterar objektet i localstorage
+    console.log(team.finalTime);
+    console.log(result);
     // window.location.href = "/pages/gameEnd.html"
 })
