@@ -1,13 +1,5 @@
 import { validateInput } from "../js/gameLogic.js";
-import { startTimer, calculateTimeTaken } from "./timerLogic.js";
-
-const team = JSON.parse(localStorage.getItem("team"));
-if (!team.startTime) {
-    team.startTime = Date.now();
-    localStorage.setItem("team", JSON.stringify(team)); //Uppdaterar objektet i localstorage
-}
-console.log("Team playing", team);
-
+import { startTimer, calculateTimeTaken, startCooldown } from "./timerLogic.js";
 
 const buttonContainer = document.querySelector("#buttonContainer")
 
@@ -24,8 +16,30 @@ const warningDiv = document.querySelector("#warningDiv");
 
 const partCardContainner = document.querySelector("#destinationCardContainer");
 const endCardContainer = document.querySelector("#endCardContainer");
-
 const mapBtn = document.querySelector("#mapBtn");
+const inputField = document.querySelector(".answer-card input");
+
+const finishBtn = document.getElementById("finishBtn");
+const showTimer = document.querySelector("#timer");
+
+
+
+const cooldownStart = localStorage.getItem("cooldownStart"); // Cooldown timer
+const team = JSON.parse(localStorage.getItem("team"));
+if (!team.startTime) {
+    team.startTime = Date.now();
+    localStorage.setItem("team", JSON.stringify(team)); //Uppdaterar objektet i localstorage
+}
+
+if (cooldownStart) {
+    inputField.disabled = true
+    startCooldown(confirmBtn, () => {
+        inputField.disabled = false
+    })
+}
+
+console.log("Team playing", team);
+
 
 buttonContainer.addEventListener("click", function (e) {
     if (!e.target.classList.contains("selected")) {
@@ -59,15 +73,6 @@ document.querySelector("#pageMain").addEventListener("click", function (e) {
     }
 })
 
-let cooldownTime = 300;
-confirmBtn.addEventListener("click", () => { 
-    let inputOK = validateInput(confirmBtn.id, input.value);
-
-    if (!inputOK) {
-
-    }
-})
-
 closeIcon.addEventListener("click", closePopup)
 
 function closePopup() {
@@ -75,7 +80,6 @@ function closePopup() {
     warningDiv.style.display = "none";
 }
 
-const inputField = document.querySelector(".answer-card input");
 
 inputField.addEventListener("input", () => {
     confirmBtn.classList.toggle("inactive", inputField.value.trim() === "")
@@ -86,8 +90,6 @@ mapBtn.addEventListener("click", () => {
 })
 
 
-const finishBtn = document.getElementById("finishBtn");
-const showTimer = document.querySelector("#timer");
 
 const timer = startTimer(showTimer, () => {
     window.location.href = "/pages/gameEnd.html?result=dnf"

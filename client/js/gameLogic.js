@@ -1,19 +1,24 @@
-import { locationsData } from "../../data/location.js";
+import { locationsData, endLocation } from "../../data/location.js";
+import { startCooldown } from "./timerLogic.js";
 
 const team = JSON.parse(localStorage.getItem("team"));
+const cooldownStart = localStorage.getItem("cooldownStart");
 console.log("Team playing", team);
 
 const currLocation = locationsData.find(l => l.locationID === team.currLocation);
 console.log(currLocation);
 
-const submitbtn = document.querySelector(".answer-card button");
+const confirmBtn = document.querySelector(".answer-card button");
 const inputField = document.querySelector(".answer-card input");
 
-submitbtn.addEventListener("click", () => {
-    const answerType = submitbtn.id;
+confirmBtn.addEventListener("click", () => {
+    const answerType = confirmBtn.id;
     const input = inputField.value;
 
-    validateInput(answerType, input)
+    if (!confirmBtn.classList.contains("inactive")) {
+        validateInput(answerType, input)
+    }
+
 });
 
 export function validateInput(answerType, userInput) {
@@ -44,8 +49,12 @@ export function validateInput(answerType, userInput) {
             // team.hintsUnlocked.push()
             // updateUI();    // Update game with new main clue and small clue
         } else {
-            alert("wrong");
-            return true;
+            console.log("wrong guess");
+            inputField.disabled = true
+            confirmBtn.classList.add("inactive");
+            startCooldown(confirmBtn, () => {
+                inputField.disabled = false
+            })
         }
 
     }
@@ -75,6 +84,8 @@ function checkClue(guess) {
 
 function checkMainClue(guess) {
     const corrMainAnwers = endLocation.acceptableAnswers
+    console.log(`Main answers: ${corrMainAnwers}`);
+    console.log("Guess:", guess);
 
     return corrMainAnwers.some(a => a === guess.toLocaleLowerCase());
 
