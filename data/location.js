@@ -14,7 +14,7 @@ export const locationsData = [
     {
         locationID: 2,
         hint: "När solen går ner vaknar huset till liv. Fjärdedelar av ljud. Här stiger ljudet våning för våning. Från golv till golv förändras genren.",
-        acceptableAnswers: ["etage"],
+        acceptableAnswers: ["etage", "étage"],
         challenge: "",
         code: "x",
         mainClueHint: "Jag står där historien sitter i vägg, men jag är inte levande – ändå full av skägg. Här kan du resa i tid utan att gå, och möta både nutid och det som var då.",
@@ -38,7 +38,7 @@ export const locationsData = [
     }, {
         locationID: 5,
         hint: "Jag är där asfalt ger plats åt löv och tystare steg, där bänkar tar över efter trafikens brus. Jag ligger där stadens sista steg blir utsikt, och där mitt namn låter som havet intill.",
-        acceptableAnswers: ["xxx"],
+        acceptableAnswers: ["öresundspark", "öresundsparken"],
         code: "x",
         challenge: "Skulpturen Vinden - man ska leta upp statyn och skriva in år."
     }
