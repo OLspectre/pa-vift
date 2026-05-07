@@ -1,6 +1,7 @@
 const team = JSON.parse(localStorage.getItem("team"));
 console.log("Team playing", team);
 
+import { validateInput } from "/gameLogic.js"
 
 const buttonContainer = document.querySelector("#buttonContainer")
 
@@ -13,7 +14,6 @@ const closeIcon = document.querySelector(".close-popup");
 const confirmBtn = document.querySelector(".answer-card button");
 const popupMain = document.querySelector("#popupMain");
 const warningDiv = document.querySelector("#warningDiv");
-
 
 const partCardContainner = document.querySelector("#destinationCardContainer");
 const endCardContainer = document.querySelector("#endCardContainer");
@@ -41,13 +41,18 @@ buttonContainer.addEventListener("click", function (e) {
 document.querySelector("#pageMain").addEventListener("click", function (e) {
     console.log(e);
     
-    if (e.target.id === "guessPartBtn") overlayPopup.style.display = "flex";
+    if (e.target.id === "guessPartBtn") {
+        overlayPopup.style.display = "flex";
+        confirmBtn.id = "destination"
+    } 
     if (e.target.id === "guessEndBtn") {
         warningDiv.style.display = "block";
         overlayPopup.style.display = "flex";
+        confirmBtn.id = "main"
     }
 })
 
+confirmBtn.addEventListener("click", validateInput)
 
 closeIcon.addEventListener("click", closePopup)
 
