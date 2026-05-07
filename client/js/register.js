@@ -32,12 +32,7 @@ export function registerUser() {
 
 function updateTeam(team, name) {
     team.name = name;
-    localStorage.setItem("team", JSON.stringify(team));
-
-    // const currentTeam = JSON.parse(localStorage.getItem("team"));
-    // console.log(currentTeam);
-
-
+    localStorage.setItem("team", JSON.stringify(team)); //Uppdaterar objektet i localstorage
 }
 
 function findTeam(code) {

@@ -65,27 +65,26 @@ export function validateInput(answerType, userInput) {
 }
 
 
-function checkClue(answer) {
+function checkClue(guess) {
     const corrAnswers = currLocation.acceptableAnswers;
 
     for (let a of corrAnswers) {
-        if (a.toLowerCase === answer.toLowerCase) return true;
+        if (a.toLowerCase === guess.toLowerCase) return true;
     }
 }
 
-function checkMainClue(answer) {
+function checkMainClue(guess) {
     const corrMainAnwers = endLocation.acceptableAnswers
 
-    for (let a of corrAnswers) {
-        if (a.toLowerCase() === answer.toLowerCase()) return true;
-    }
+    return corrMainAnwers.some(a => a === guess.toLocaleLowerCase());
+
 }
 
 
-function checkChallengeCode(answer) {
+function checkChallengeCode(guess) {
     const corrAnswers = locationsData.map(d => d.challAnswer);
     console.log(corrAnswers);
     let locationN = team.currLocation - 1;
 
-    return corrAnswers[locationN].toLocaleLowerCase() === answer.toLocaleLowerCase();
+    return corrAnswers[locationN].toLocaleLowerCase() === guess.toLocaleLowerCase();
 }

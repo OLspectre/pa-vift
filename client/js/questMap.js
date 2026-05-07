@@ -1,4 +1,5 @@
 import { STADIA_KEY } from "./config.js";
+import { startTimer, calculateTimeTaken } from "./timerLogic.js";
 
 var map = L.map('map')
 
@@ -88,8 +89,19 @@ document.addEventListener('touchend', () => { dragging = false });
 
 
 
+
+const backBtn = document.querySelector("#mapSection button");
 const answerbtn = document.querySelector("#challenge-answer-btn");
 const overlayPopup = document.querySelector(".overlay-popup");
+const showTimer = document.querySelector("#timer");
+
+const timer = startTimer(showTimer, () => {
+    window.location.href = "/pages/gameEnd.html?result=dnf"
+})
+
+backBtn.addEventListener("click", (e) => {
+    window.location.href = "../pages/game.html";
+})
 
 answerbtn.addEventListener("click", (e) => {
     overlayPopup.style.display = "flex";
@@ -103,6 +115,7 @@ closeIcon.addEventListener("click", closePopup)
 
 function closePopup() {
     overlayPopup.style.display = "none";
+    inputField.value = "";
 }
 
 const inputField = document.querySelector(".answer-card input");
