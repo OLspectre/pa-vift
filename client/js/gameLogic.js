@@ -1,5 +1,6 @@
 import { locationsData, endLocation } from "../../data/location.js";
 import { startCooldown, calculateTimeTaken } from "./timerLogic.js";
+import { unlockMap, updateUI, closePopup } from "./game.js";
 
 const team = JSON.parse(localStorage.getItem("team"));
 const cooldownStart = localStorage.getItem("cooldownStart");
@@ -31,7 +32,6 @@ export function validateInput(answerType, userInput) {
         // Check userInput with challenge answer
         const correct = checkChallengeCode(userInput);
         if (correct) {
-            alert("Correct Answer");
             team.currLocation++;
             // team.hintsUnlocked.push()
             // updateUI();    // Update game with new main clue and small clue
@@ -44,7 +44,6 @@ export function validateInput(answerType, userInput) {
         const correct = checkMainClue(userInput);
 
         if (correct) {
-            alert("Correct Answer");
             clearInterval(timer)
             const result = calculateTimeTaken();
             team.finalTime = result;
@@ -70,8 +69,17 @@ export function validateInput(answerType, userInput) {
         const correct = checkClue(userInput);
 
         if (correct) {
-            alert("Correct Answer");
-            // team.hintsUnlocked.push()
+            console.log("correct guess");
+
+            if (team.currLocation === 1) {
+                unlockMap();
+                updateUI();
+                closePopup();
+
+                // setTimeout(() => {
+                // }, 1500)
+            }
+            team.currLocation++;
             // updateUI();    // Update game with new main clue and small clue
         } else {
             alert("wrong");
@@ -85,7 +93,7 @@ function checkClue(guess) {
     const corrAnswers = currLocation.acceptableAnswers;
 
     for (let a of corrAnswers) {
-        if (a.toLowerCase === guess.toLowerCase) return true;
+        if (a.toLowerCase() === guess.toLowerCase()) return true;
     }
 }
 

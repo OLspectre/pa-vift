@@ -26,10 +26,7 @@ const showTimer = document.querySelector("#timer");
 
 
 const cooldownStart = localStorage.getItem("cooldownStart");
-console.log(cooldownStart);
-
 if (cooldownStart) {
-    console.log(true);
 
     guessEndBtn.disabled = true;
     guessEndBtn.classList.add("inactive");
@@ -52,9 +49,10 @@ if (!team.startTime) {
 console.log("Team info:", team);
 
 const timer = startTimer(showTimer, () => {
-    team.endTime = 
-    window.location.href = "/pages/gameEnd.html?result=dnf"
+    team.endTime =
+        window.location.href = "/pages/gameEnd.html?result=dnf"
 })
+
 
 
 
@@ -77,6 +75,7 @@ buttonContainer.addEventListener("click", function (e) {
     }
 })
 
+
 document.querySelector("#pageMain").addEventListener("click", function (e) {
     if (e.target.id === "guessPartBtn") {
         overlayPopup.style.display = "flex";
@@ -91,7 +90,7 @@ document.querySelector("#pageMain").addEventListener("click", function (e) {
 
 closeIcon.addEventListener("click", closePopup)
 
-function closePopup() {
+export function closePopup() {
     overlayPopup.style.display = "none";
     warningDiv.style.display = "none";
     inputField.value = "";
@@ -102,14 +101,27 @@ inputField.addEventListener("input", () => {
 })
 
 
-if (team.mapUnlocked) {
-    mapBtn.style.display = "block";
-    notification.style.display = "block";
+export function updateUI() {
+    JSON.parse(localStorage.getItem("team"));
+    if (team.mapUnlocked) {
+        console.log("MAP UNLOCKED");
 
+        const hasMapBtn = document.querySelector("#map-btn-wrapper");
+        hasMapBtn.style.display = "block";
+        notification.textContent = "Kartan är nu upplåst! Bege er till destinationen."
+    }
+    if (team.mapNotificationSeen) {
+        notification.remove()
+    }
 }
 
+// Vid sidladdning
+updateUI()
+
+
 mapBtn.addEventListener("click", () => {
-    notification.remove();
+    team.mapNotificationSeen = true;
+    localStorage.setItem("team", JSON.stringify(team));
     window.location.href = "../pages/questMap.html";
 })
 
@@ -118,7 +130,7 @@ mapBtn.addEventListener("click", () => {
 
 
 
-
+//för testing
 finishBtn.addEventListener("click", () => {
     clearInterval(timer)
     const result = calculateTimeTaken();
@@ -128,3 +140,12 @@ finishBtn.addEventListener("click", () => {
     console.log(result);
     // window.location.href = "/pages/gameEnd.html"
 })
+
+
+export function unlockMap() {
+    team.mapUnlocked = true;
+    localStorage.setItem("team", JSON.stringify(team));//Uppdaterar objektet i localstorage
+    console.log(team);
+
+    updateUI();
+}
