@@ -1,3 +1,4 @@
+import { locationsData } from "../../data/location.js";
 import { validateInput } from "../js/gameLogic.js";
 import { startTimer, calculateTimeTaken, startCooldown, resumeCooldown } from "./timerLogic.js";
 
@@ -113,6 +114,18 @@ export function updateUI() {
     if (team.mapNotificationSeen) {
         notification.remove()
     }
+
+
+    // renderHint()
+    const title = document.querySelector("#destinationCardContainer h3");
+    const hintText = document.querySelector("#destinationCardContainer p");
+
+    title.textContent = `Destination ${team.currLocation}`;
+    let hint = locationsData.find(d => d.locationID === team.currLocation).hint;
+    hintText.textContent = hint;
+
+    // renderEndClue()
+
 }
 
 // Vid sidladdning
