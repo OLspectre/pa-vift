@@ -109,7 +109,7 @@ export function updateUI() {
 
         const hasMapBtn = document.querySelector("#map-btn-wrapper");
         hasMapBtn.style.display = "block";
-        notification.textContent = "Kartan är nu upplåst! Bege er till destinationen."
+        notification.textContent = "!"
     }
     if (team.mapNotificationSeen) {
         notification.remove()
