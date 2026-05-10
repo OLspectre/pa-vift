@@ -23,8 +23,8 @@ confirmBtn.addEventListener("click", () => {
 
 export function validateInput(answerType, userInput) {
     console.log("checking input");
-    console.log(answerType);
-    console.log(userInput);
+    console.log("answerType:", answerType);
+    console.log("user guess:", userInput);
 
 
     if (answerType === "challenge") {

@@ -1,5 +1,8 @@
+import { locationsData } from "../../data/location.js";
 import { STADIA_KEY } from "./config.js";
 import { startTimer, calculateTimeTaken, startCooldown, resumeCooldown } from "./timerLogic.js";
+
+const team = JSON.parse(localStorage.getItem("team"));
 
 var map = L.map('map')
 
@@ -148,3 +151,17 @@ inputField.addEventListener("input", () => {
 })
 
 
+const challengeTitle = document.querySelector(".sheet-content h3");
+const challengeText = document.querySelector(".sheet-content p");
+
+
+function renderChallenge() {
+    const challenge = locationsData.find(d => d.locationID === team.currLocation).challenge;
+
+
+    challengeTitle.textContent = `Utamaning ${team.currLocation}`;
+    challengeText.textContent = `${challenge}`;
+}
+
+if()
+renderChallenge();

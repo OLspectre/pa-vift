@@ -9,7 +9,6 @@ const endClueBtn = document.querySelector("#endClueBtn");
 const overlayPopup = document.querySelector(".overlay-popup");
 const closeIcon = document.querySelector(".close-popup");
 const confirmBtn = document.querySelector(".answer-card button");
-const input = document.querySelector(".answer-card input");
 const popupMain = document.querySelector("#popupMain");
 const warningDiv = document.querySelector("#warningDiv");
 
@@ -66,6 +65,7 @@ buttonContainer.addEventListener("click", function (e) {
         if (e.target == endClueBtn) {
             partCardContainner.style.display = "none"
             endCardContainer.style.display = "flex"
+
         }
 
         if (e.target != endClueBtn) {

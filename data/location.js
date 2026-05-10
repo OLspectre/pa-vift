@@ -5,8 +5,8 @@ export const locationsData = [
         locationID: 1,
         hint: "Den gyllene måsen är nära till hands och tittar ut över vattnet",
         acceptableAnswers: ["McDonalds anna lindh plats", "anna lindh plats McDonalds", "McDonalds anna lindhs plats", "anna lindhs plats McDonalds", "McDonalds anna linds plats", "anna linds plats McDonalds"],
-        challenge: "Här är min beställning: Big Mac mål, 4 bitar chicken nuggets och en sundae utan topping.",
-        challAnswer: "x",
+        challenge: "Här är min beställning, hur mycket kostar den? En Big Mac, 4 bitar chicken nuggets och en glass (sundae naturell)",
+        challAnswer: "108",
         mainClueHint: "Vi lämnar fast mark och närmar oss något vars namn skulle kunna beskriva en helt vanlig bostad, men där alla har känt sig långt ifrån hemma.",
         pinPoint: [55.609215923055416, 12.996340692043304]
     },
@@ -15,7 +15,7 @@ export const locationsData = [
         hint: "När solen går ner vaknar huset till liv. Fjärdedelar av ljud. Här stiger ljudet våning för våning. Från golv till golv förändras genren.",
         acceptableAnswers: ["etage", "étage"],
         challenge: "En lapp sitter uppsatt på en stolpe utanför Etage, leta upp den…",
-        challAnswer: "Alla vill till himlen men ingen vill dö",
+        challAnswer: "Alla vill till himmelen men ingen vill dö",
         mainClueHint: "Jag står där historien sitter i vägg, men jag är inte levande – ändå full av skägg. Här kan du resa i tid utan att gå, och möta både nutid och det som var då.",
 
     },
@@ -38,8 +38,9 @@ export const locationsData = [
         locationID: 5,
         hint: "Jag är där asfalt ger plats åt löv och tystare steg, där bänkar tar över efter trafikens brus. Jag ligger där stadens sista steg blir utsikt, och där mitt namn låter som havet intill.",
         acceptableAnswers: ["öresundspark", "öresundsparken"],
-        challAnswer: "1959",
-        challenge: "Leta efter skulpturen Vinden."
+        challenge: "Leta efter skulpturen Vinden.",
+        challAnswer: "1959"
+
     }
 ];
 export const endLocation =
