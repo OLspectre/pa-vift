@@ -1,5 +1,5 @@
 import { locationsData, endLocation } from "../../data/location.js";
-import { startCooldown } from "./timerLogic.js";
+import { startCooldown, calculateTimeTaken } from "./timerLogic.js";
 
 const team = JSON.parse(localStorage.getItem("team"));
 const cooldownStart = localStorage.getItem("cooldownStart");
@@ -45,9 +45,12 @@ export function validateInput(answerType, userInput) {
 
         if (correct) {
             alert("Correct Answer");
-            endGame();
-            // team.hintsUnlocked.push()
-            // updateUI();    // Update game with new main clue and small clue
+            clearInterval(timer)
+            const result = calculateTimeTaken();
+            team.finalTime = result;
+            localStorage.setItem("team", JSON.stringify(team));//Uppdaterar objektet i localstorage
+            console.log(team.finalTime);
+            window.location.href = "../pages/gameEnd.html"
         } else {
             document.querySelector(".overlay-popup").style.display = "none";
             console.log("wrong guess");

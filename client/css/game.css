@@ -63,10 +63,7 @@ section {
     text-align: center;
 }
 
-#mapBtn {
-    width: 30%;
-    font-size: var(--pMedium);
-}
+
 
 #pointContainer {
     display: flex;
@@ -149,4 +146,31 @@ section {
 #warningDiv span {
     font-weight: bolder;
     /* display: block; */
+}
+
+#map-btn-wrapper {
+    position: relative;
+    width: 100%;
+    /* display: inline-block; */
+}
+
+#mapBtn {
+    width: 30%;
+    font-size: var(--pMedium);
+    margin: auto;
+}
+
+
+#notification {
+    background-color: #c81b1b;
+    color: white;
+    font-weight: bold;
+    border-radius: 100%;
+    position: absolute;
+    top: -8px;
+    left: 60%;
+    width: 20px;
+    text-align: center;
+    padding: 1px;
+    box-shadow: 0px 0px 2px red;
 }

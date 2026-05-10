@@ -163,5 +163,4 @@ function renderChallenge() {
     challengeText.textContent = `${challenge}`;
 }
 
-if()
 renderChallenge();

@@ -52,6 +52,7 @@ if (!team.startTime) {
 console.log("Team info:", team);
 
 const timer = startTimer(showTimer, () => {
+    team.endTime = 
     window.location.href = "/pages/gameEnd.html?result=dnf"
 })
 
@@ -100,7 +101,15 @@ inputField.addEventListener("input", () => {
     confirmBtn.classList.toggle("inactive", inputField.value.trim() === "")
 })
 
+
+if (team.mapUnlocked) {
+    mapBtn.style.display = "block";
+    notification.style.display = "block";
+
+}
+
 mapBtn.addEventListener("click", () => {
+    notification.remove();
     window.location.href = "../pages/questMap.html";
 })
 
