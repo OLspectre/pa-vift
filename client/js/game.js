@@ -81,7 +81,7 @@ buttonContainer.addEventListener("click", function (e) {
 document.querySelector("#pageMain").addEventListener("click", function (e) {
     let warningDivContent;
 
-    if (e.target.id === "guessPartBtn") {
+    if (e.target.id === "guessPartBtn" && !e.target.classList.contains("inactive")) {
         overlayPopup.style.display = "flex";
         warningDivContent = ""
         warningDiv.innerHTML = warningDivContent;
@@ -106,6 +106,40 @@ inputField.addEventListener("input", () => {
     confirmBtn.classList.toggle("inactive", inputField.value.trim() === "")
 })
 
+
+confirmBtn.addEventListener("click", () => {
+    validateInput(confirmBtn.id, inputField.value, {
+        onCorrect: () => {
+            if (confirmBtn.id === "destination") {
+                unlockMap()
+                setTimeout(() => closePopup(), 1500)
+            }
+            if (confirmBtn.id === "main") {
+                clearInterval(timer)
+                team.finalTime = calculateTimeTaken()
+                localStorage.setItem("team", JSON.stringify(team))
+                window.location.href = "../pages/gameEnd.html"
+            }
+        },
+        onWrong: () => {
+            if (confirmBtn.id === "main") {
+                document.querySelector(".overlay-popup").style.display = "none"
+                guessEndBtn.classList.add("inactive")
+                guessEndBtn.disabled = true
+                startCooldown(guessEndBtn, () => {
+                    guessEndBtn.disabled = false
+                    guessEndBtn.classList.remove("inactive")
+                    guessEndBtn.textContent = "Svara"
+                })
+            } else {
+                alert("wrong")
+            }
+        }
+    })
+})
+
+
+
 const title = document.querySelector("#destinationCardContainer h3");
 const hintText = document.querySelector("#destinationCardContainer p");
 
@@ -129,6 +163,7 @@ export function updateUI() {
         hasMapBtn.style.display = "block";
         notification.textContent = "!";
         team.activeChallenge = team.currLocation;
+        document.querySelector("#guessPartBtn").classList.add("inactive");
         return;
     }
 
@@ -138,6 +173,8 @@ export function updateUI() {
         hintText.textContent = "Lös utmaningen på destinationen för nästa gåta";
         hasMapBtn.style.display = "block";
         notification.remove();
+        document.querySelector("#guessPartBtn").classList.add("inactive");
+        document.querySelector("#guessPartBtn").disabled = true;
         return;
     }
 
@@ -145,6 +182,9 @@ export function updateUI() {
     title.textContent = `Destination ${team.currLocation}`;
     hintText.textContent = locationsData.find(d => d.locationID === team.currLocation).hint;
     hasMapBtn.style.display = "block";
+    document.querySelector("#guessPartBtn").classList.remove("inactive");
+    document.querySelector("#guessPartBtn").disabled = true;
+
 }
 
 // function renderMainClue() {

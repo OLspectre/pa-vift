@@ -1,8 +1,16 @@
 import { locationsData } from "../../data/location.js";
 import { STADIA_KEY } from "./config.js";
+// import { validateInput } from "./gameLogic.js";
 import { startTimer, calculateTimeTaken, startCooldown, resumeCooldown } from "./timerLogic.js";
 
-const team = JSON.parse(localStorage.getItem("team"));
+let team = JSON.parse(localStorage.getItem("team"));
+const backBtn = document.querySelector("#backBtn");
+const answerbtn = document.querySelector("#challenge-answer-btn");
+const overlayPopup = document.querySelector(".overlay-popup");
+const showTimer = document.querySelector("#timer");
+const challengeTitle = document.querySelector(".sheet-content h3");
+const challengeText = document.querySelector(".sheet-content p");
+
 
 var map = L.map('map')
 
@@ -53,7 +61,7 @@ function error(err) {
         alert("Tekniskt fel: Kan inte hämta platsinformation");
     }
 }
-
+renderChallenge();
 
 // PLACERA PIN
 map.on('click', (e) => {
@@ -113,10 +121,7 @@ document.addEventListener('touchend', () => { dragging = false });
 
 
 
-const backBtn = document.querySelector("#backBtn");
-const answerbtn = document.querySelector("#challenge-answer-btn");
-const overlayPopup = document.querySelector(".overlay-popup");
-const showTimer = document.querySelector("#timer");
+
 
 const timer = startTimer(showTimer, () => {
     window.location.href = "/pages/gameEnd.html?result=dnf"
@@ -124,8 +129,6 @@ const timer = startTimer(showTimer, () => {
 
 
 backBtn.addEventListener("click", (e) => {
-    console.log("back btn pressed");
-
     window.location.href = "../pages/game.html";
 })
 
@@ -137,7 +140,7 @@ answerbtn.addEventListener("click", (e) => {
 const closeIcon = document.querySelector(".close-popup");
 const confirmBtn = document.querySelector(".answer-card button");
 
-closeIcon.addEventListener("click", closePopup)
+closeIcon.addEventListener("click", closePopup);
 
 function closePopup() {
     overlayPopup.style.display = "none";
@@ -151,8 +154,21 @@ inputField.addEventListener("input", () => {
 })
 
 
-const challengeTitle = document.querySelector(".sheet-content h3");
-const challengeText = document.querySelector(".sheet-content p");
+confirmBtn.addEventListener("click", () => {
+    validateInput(confirmBtn.id, inputField.value, {
+        onCorrect: () => {
+            let team = JSON.parse(localStorage.getItem("team"))
+            team.currLocation++
+            localStorage.setItem("team", JSON.stringify(team))
+            closePopup()
+            renderChallenge()
+        },
+        onWrong: () => {
+            alert("wrong")
+        }
+    })
+})
+
 
 
 function renderChallenge() {
@@ -163,4 +179,4 @@ function renderChallenge() {
     challengeText.textContent = `${challenge}`;
 }
 
-renderChallenge();
+
