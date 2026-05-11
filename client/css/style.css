@@ -180,3 +180,8 @@ STYLE FOR OVERLAY POPUP CARD
     flex-direction: column;
     gap: 8px;
 }
+
+.hidden {
+    display: none;
+    color: red;
+}

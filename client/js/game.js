@@ -11,10 +11,11 @@ const overlayPopup = document.querySelector(".overlay-popup");
 const closeIcon = document.querySelector(".close-popup");
 const confirmBtn = document.querySelector(".answer-card button");
 const popupMain = document.querySelector("#popupMain");
-const warningDiv = document.querySelector("#warningDiv");
+
+const mainAnswerCard = document.querySelector(".titleAndInput-container");
 
 const guessEndBtn = document.querySelector("button#guessEndBtn");
-
+const warningDiv = document.querySelector("#warningDiv");
 
 const partCardContainner = document.querySelector("#destinationCardContainer");
 const endCardContainer = document.querySelector("#endCardContainer");
@@ -58,6 +59,8 @@ const timer = startTimer(showTimer, () => {
 
 
 buttonContainer.addEventListener("click", function (e) {
+    console.log("clicked", e.target);
+
     if (!e.target.classList.contains("selected")) {
         endClueBtn.classList.toggle("selected");
         partClueBtn.classList.toggle("selected");
@@ -76,15 +79,25 @@ buttonContainer.addEventListener("click", function (e) {
     }
 })
 
-
 document.querySelector("#pageMain").addEventListener("click", function (e) {
+    let warningDivContent;
+
     if (e.target.id === "guessPartBtn") {
         overlayPopup.style.display = "flex";
+        warningDivContent = ""
+        console.log(warningDivContent);
+
+        warningDiv.innerHTML = warningDivContent;
+
         confirmBtn.id = "destination"
     }
     if (e.target.id === "guessEndBtn") {
-        warningDiv.style.display = "block";
         overlayPopup.style.display = "flex";
+        warningDivContent = `Fel gissning låser svarsknappen för huvudgåtan i <span>5 minuter</span>`
+        console.log(warningDivContent);
+
+        warningDiv.innerHTML = warningDivContent;
+
         confirmBtn.id = "main"
     }
 })
@@ -93,7 +106,6 @@ closeIcon.addEventListener("click", closePopup)
 
 export function closePopup() {
     overlayPopup.style.display = "none";
-    warningDiv.style.display = "none";
     inputField.value = "";
 }
 
