@@ -12,11 +12,12 @@ const challengeTitle = document.querySelector(".sheet-content h3");
 const challengeText = document.querySelector(".sheet-content p");
 
 
+
 var map = L.map('map')
 
 L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png?api_key=$STADIA_KEY', {
     attribution: '© Stadia Maps © OpenStreetMap',
-    maxZoom: 25
+    maxZoom: 200
 }).addTo(map)
 
 
@@ -64,21 +65,41 @@ function error(err) {
 renderChallenge();
 
 // PLACERA PIN
-map.on('click', (e) => {
-    const { lat, lng } = e.latlng
-    console.log(lat, lng)
-    placePin(lat, lng)
-})
-function placePin(dLat, dLng) { // posData blir ett objekt [xx.xx, yy.yy] --> locationx.pinData. Anropas vid korrekt location gissning
+// map.on('click', (e) => {
+//     const { lat, lng } = e.latlng
+//     console.log(lat, lng)
+//     placePin(lat, lng)
+// })
 
-    let destinationPin = L.circleMarker([dLat, dLng]).addTo(map)
-    circle = L.circle([dLat, dLng], {
-        radius: accuracy,
-        color: "#e46e27",
-        fillColor: "#e46e27",
-        fillOpacity: 0.2,
-        weight: 2
+console.log(team.activeChallenge);
+
+let allPins = [];
+
+for (let i = 1; i <= team.currLocation; i++) {
+
+    let pinData = locationsData[i - 1].pinPoint;
+    let dLat = pinData[0], dLng = pinData[1];
+
+    console.log(`Placing pin for location ${i}:`, pinData);
+    placePin(dLat, dLng, i);
+}
+
+
+
+
+function placePin(dLat, dLng, locationID) {
+    let destinationPin = L.circleMarker([dLat, dLng], {
+        radius: 10,
+        fillColor: "#cc6729",
+        color: "#a14f1d",
+        weight: 3,
+        opacity: 1,
+        fillOpacity: 1
     }).addTo(map);
+    destinationPin.bindPopup(`<b>Unlocked location:</b><br>${locationsData[locationID - 1].name}`).openPopup();
+
+    allPins.push(destinationPin)
+
 }
 
 
@@ -157,14 +178,14 @@ inputField.addEventListener("input", () => {
 confirmBtn.addEventListener("click", () => {
     validateInput(confirmBtn.id, inputField.value, {
         onCorrect: () => {
-            let team = JSON.parse(localStorage.getItem("team"))
-            team.currLocation++
-            localStorage.setItem("team", JSON.stringify(team))
-            closePopup()
-            renderChallenge()
+            let team = JSON.parse(localStorage.getItem("team"));
+            team.currLocation++;
+            localStorage.setItem("team", JSON.stringify(team));
+            closePopup();
+            renderChallenge();
         },
         onWrong: () => {
-            alert("wrong")
+            alert("wrong");
         }
     })
 })

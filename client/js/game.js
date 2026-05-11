@@ -1,6 +1,7 @@
 import { locationsData } from "../../data/location.js";
 import { validateInput } from "../js/gameLogic.js";
 import { startTimer, calculateTimeTaken, startCooldown, resumeCooldown } from "./timerLogic.js";
+// import { placePin } from "./questMap.js";
 
 const buttonContainer = document.querySelector("#buttonContainer")
 
@@ -25,6 +26,7 @@ const inputField = document.querySelector(".answer-card input");
 const finishBtn = document.getElementById("finishBtn");
 const showTimer = document.querySelector("#timer");
 const hasMapBtn = document.querySelector("#map-btn-wrapper");
+
 
 
 const cooldownStart = localStorage.getItem("cooldownStart");
@@ -173,6 +175,7 @@ export function updateUI() {
         hintText.textContent = "Lös utmaningen på destinationen för nästa gåta";
         hasMapBtn.style.display = "block";
         notification.remove();
+        team.activeChallenge = team.currLocation;
         document.querySelector("#guessPartBtn").classList.add("inactive");
         document.querySelector("#guessPartBtn").disabled = true;
         return;
