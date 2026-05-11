@@ -1,6 +1,6 @@
 import { locationsData } from "../../data/location.js";
 import { STADIA_KEY } from "./config.js";
-// import { validateInput } from "./gameLogic.js";
+import { validateInput } from "./gameLogic.js";
 import { startTimer, calculateTimeTaken, startCooldown, resumeCooldown } from "./timerLogic.js";
 
 let team = JSON.parse(localStorage.getItem("team"));
@@ -17,7 +17,7 @@ var map = L.map('map')
 
 L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png?api_key=$STADIA_KEY', {
     attribution: '© Stadia Maps © OpenStreetMap',
-    maxZoom: 200
+    maxZoom: 2000
 }).addTo(map)
 
 
@@ -65,17 +65,17 @@ function error(err) {
 renderChallenge();
 
 // PLACERA PIN
-// map.on('click', (e) => {
-//     const { lat, lng } = e.latlng
-//     console.log(lat, lng)
-//     placePin(lat, lng)
-// })
+map.on('click', (e) => {
+    const { lat, lng } = e.latlng
+    console.log("tryckte:", lat, lng)
+    placePin(lat, lng)
+})
 
 console.log(team.activeChallenge);
 
 let allPins = [];
 
-for (let i = 1; i <= team.currLocation; i++) {
+for (let i = 1; i <= team.activeChallenge; i++) {
 
     let pinData = locationsData[i - 1].pinPoint;
     let dLat = pinData[0], dLng = pinData[1];

@@ -19,6 +19,7 @@ export const locationsData = [
         challenge: "En lapp sitter uppsatt på en stolpe utanför Etage, leta upp den…",
         challAnswer: "Alla vill till himmelen men ingen vill dö",
         mainClueHint: "Jag står där historien sitter i vägg, men jag är inte levande – ändå full av skägg. Här kan du resa i tid utan att gå, och möta både nutid och det som var då.",
+        pinPoint: []
 
     },
     {
@@ -28,7 +29,9 @@ export const locationsData = [
         acceptableAnswers: ["stadsbiblioteket", "malmö stadsbibliotek"],
         challenge: "Ta er till ljusets kalender och leta upp nr 746",
         challAnswer: "Konst & Foto",
-        mainClueHint: "Där språk och herrar byttes utan att jag flyttades. Jag var en dansk försvarsvakt, men blev svensk historia."
+        mainClueHint: "Där språk och herrar byttes utan att jag flyttades. Jag var en dansk försvarsvakt, men blev svensk historia.",
+        pinPoint: [55.60059517292868, 12.994113914662059]
+
     },
     {
         locationID: 4,
@@ -37,15 +40,17 @@ export const locationsData = [
         acceptableAnswers: ["kronprinsen", "kronprinsen köpcentrum"],
         challenge: "Hitta skärmen där man kan få all information. Här letar vi efter nr 4…",
         challAnswer: "Hantverket",
-        mainClueHint: "Jag är det mest kända slottet i Malmö, omringad av vallgravar visar jag upp min och stadens historia."
+        mainClueHint: "Jag är det mest kända slottet i Malmö, omringad av vallgravar visar jag upp min och stadens historia.",
+        pinPoint: [55.59755948133277, 12.983746646251431]
+
     }, {
         locationID: 5,
         name: "Öresundsparken",
         hint: "Jag är där asfalt ger plats åt löv och tystare steg, där bänkar tar över efter trafikens brus. Jag ligger där stadens sista steg blir utsikt, och där mitt namn låter som havet intill.",
         acceptableAnswers: ["öresundspark", "öresundsparken"],
         challenge: "Leta efter skulpturen Vinden.",
-        challAnswer: "1959"
-
+        challAnswer: "1959",
+        pinPoint: [55.60383357314539, 12.974163506701444]
     }
 ];
 export const endLocation =
