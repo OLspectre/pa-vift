@@ -23,10 +23,6 @@ confirmBtn.addEventListener("click", () => {
 });
 
 export function validateInput(answerType, userInput) {
-    console.log("checking input");
-    console.log("answerType:", answerType);
-    console.log("user guess:", userInput);
-
 
     if (answerType === "challenge") {
         // Check userInput with challenge answer
@@ -73,13 +69,10 @@ export function validateInput(answerType, userInput) {
 
             if (team.currLocation === 1) {
                 unlockMap();
-                updateUI();
-                closePopup();
-
-                // setTimeout(() => {
-                // }, 1500)
+                setTimeout(() => {
+                    closePopup();
+                }, 1500)
             }
-            team.currLocation++;
             // updateUI();    // Update game with new main clue and small clue
         } else {
             alert("wrong");

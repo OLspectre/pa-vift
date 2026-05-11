@@ -4,7 +4,7 @@ export const teams = [{
     id: 1,
     name: "",
     password: "1",
-    currLocation: 2,
+    currLocation: 1,
     hintsUnlocked: [startClue]
 },
 {

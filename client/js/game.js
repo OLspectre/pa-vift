@@ -24,7 +24,7 @@ const inputField = document.querySelector(".answer-card input");
 
 const finishBtn = document.getElementById("finishBtn");
 const showTimer = document.querySelector("#timer");
-
+const hasMapBtn = document.querySelector("#map-btn-wrapper");
 
 
 const cooldownStart = localStorage.getItem("cooldownStart");
@@ -39,7 +39,7 @@ if (cooldownStart) {
     })
 }
 
-const team = JSON.parse(localStorage.getItem("team"));
+let team = JSON.parse(localStorage.getItem("team"));
 
 if (!team.startTime) {
     console.log("timer startar");
@@ -52,9 +52,8 @@ console.log("Team info:", team);
 
 const timer = startTimer(showTimer, () => {
     team.endTime =
-        window.location.href = "/pages/gameEnd.html?result=dnf"
+        window.location.href = "/pages/gameEnd.html"
 })
-
 
 
 
@@ -85,19 +84,13 @@ document.querySelector("#pageMain").addEventListener("click", function (e) {
     if (e.target.id === "guessPartBtn") {
         overlayPopup.style.display = "flex";
         warningDivContent = ""
-        console.log(warningDivContent);
-
         warningDiv.innerHTML = warningDivContent;
-
         confirmBtn.id = "destination"
     }
     if (e.target.id === "guessEndBtn") {
         overlayPopup.style.display = "flex";
         warningDivContent = `Fel gissning låser svarsknappen för huvudgåtan i <span>5 minuter</span>`
-        console.log(warningDivContent);
-
         warningDiv.innerHTML = warningDivContent;
-
         confirmBtn.id = "main"
     }
 })
@@ -113,35 +106,52 @@ inputField.addEventListener("input", () => {
     confirmBtn.classList.toggle("inactive", inputField.value.trim() === "")
 })
 
+const title = document.querySelector("#destinationCardContainer h3");
+const hintText = document.querySelector("#destinationCardContainer p");
+
+
 
 export function updateUI() {
-    JSON.parse(localStorage.getItem("team"));
-    if (team.mapUnlocked) {
-        console.log("MAP UNLOCKED");
+    team = JSON.parse(localStorage.getItem("team"));
 
-        const hasMapBtn = document.querySelector("#map-btn-wrapper");
+    if (!team.mapUnlocked) {
+        // State 1: Kartan ej upplåst — visa gåta för currLocation
+        title.textContent = `Destination ${team.currLocation}`;
+        hintText.textContent = locationsData.find(d => d.locationID === team.currLocation).hint;
+        hasMapBtn.style.display = "none";
+        return;
+    }
+
+    if (team.mapUnlocked && !team.mapNotificationSeen) {
+        // State 2: Kartan precis upplåst — visas endast en gång
+        title.textContent = "Grattis!";
+        hintText.textContent = "Ni har låst upp kartan — lös utmaningen på destinationen!";
         hasMapBtn.style.display = "block";
-        notification.textContent = "!"
+        notification.textContent = "!";
+        team.activeChallenge = team.currLocation;
+        return;
     }
-    if (team.mapNotificationSeen) {
-        notification.remove()
+
+    if (team.mapUnlocked && team.mapNotificationSeen && team.currLocation === team.activeChallenge) {
+        // State 3: Sett notisen, ej löst utmaningen än
+        title.textContent = "";
+        hintText.textContent = "Lös utmaningen på destinationen för nästa gåta";
+        hasMapBtn.style.display = "block";
+        notification.remove();
+        return;
     }
 
-
-    // renderHint()
-    const title = document.querySelector("#destinationCardContainer h3");
-    const hintText = document.querySelector("#destinationCardContainer p");
-
+    // State 4: Utmaningen löst — visa nästa gåta
     title.textContent = `Destination ${team.currLocation}`;
-    let hint = locationsData.find(d => d.locationID === team.currLocation).hint;
-    hintText.textContent = hint;
-
-    // renderEndClue()
-
+    hintText.textContent = locationsData.find(d => d.locationID === team.currLocation).hint;
+    hasMapBtn.style.display = "block";
 }
 
-// Vid sidladdning
-updateUI()
+// function renderMainClue() {
+//     const clue = endLocation.riddles[team.completedLocations.length];
+//     endClueText.textContent = clue.hint;
+// }
+
 
 
 mapBtn.addEventListener("click", () => {
@@ -149,11 +159,7 @@ mapBtn.addEventListener("click", () => {
     localStorage.setItem("team", JSON.stringify(team));
     window.location.href = "../pages/questMap.html";
 })
-
-
-
-
-
+updateUI()
 
 //för testing
 finishBtn.addEventListener("click", () => {
