@@ -1,4 +1,4 @@
-import { locationsData, endLocation } from "../../data/location.js"
+import { locationsData } from "../../data/location.js"
 import { startCooldown, calculateTimeTaken } from "./timerLogic.js"
 
 export function validateInput(answerType, userInput, callbacks) {
@@ -24,7 +24,7 @@ function checkClue(guess, currLocation) {
 }
 
 function checkMainClue(guess) {
-    return endLocation.acceptableAnswers.some(a => a === guess.toLowerCase());
+    return locationsData[5].acceptableAnswers.some(a => a === guess.toLowerCase());
 }
 
 function checkChallengeCode(guess, team) {

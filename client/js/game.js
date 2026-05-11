@@ -60,8 +60,6 @@ const timer = startTimer(showTimer, () => {
 
 
 buttonContainer.addEventListener("click", function (e) {
-    console.log("clicked", e.target);
-
     if (!e.target.classList.contains("selected")) {
         endClueBtn.classList.toggle("selected");
         partClueBtn.classList.toggle("selected");
@@ -113,8 +111,13 @@ confirmBtn.addEventListener("click", () => {
     validateInput(confirmBtn.id, inputField.value, {
         onCorrect: () => {
             if (confirmBtn.id === "destination") {
+                if (team.activeChallenge === undefined) {
+                    team.activeChallenge = team.currLocation;
+                }
                 unlockMap()
                 setTimeout(() => closePopup(), 1500)
+                localStorage.setItem("team", JSON.stringify(team));
+                updateUI();
             }
             if (confirmBtn.id === "main") {
                 clearInterval(timer)
@@ -134,7 +137,7 @@ confirmBtn.addEventListener("click", () => {
                     guessEndBtn.textContent = "Svara"
                 })
             } else {
-                alert("wrong")
+                alert("Fel svar")
             }
         }
     })
@@ -164,7 +167,6 @@ export function updateUI() {
         hintText.textContent = "Ni har låst upp kartan — lös utmaningen på destinationen!";
         hasMapBtn.style.display = "block";
         notification.textContent = "!";
-        team.activeChallenge = team.currLocation;
         document.querySelector("#guessPartBtn").classList.add("inactive");
         return;
     }
@@ -186,7 +188,12 @@ export function updateUI() {
     hintText.textContent = locationsData.find(d => d.locationID === team.currLocation).hint;
     hasMapBtn.style.display = "block";
     document.querySelector("#guessPartBtn").classList.remove("inactive");
-    document.querySelector("#guessPartBtn").disabled = true;
+    document.querySelector("#guessPartBtn").disabled = false;
+    notification.classList.add("hidden");
+
+    for (let hint of team.hintsUnlocked) {
+
+    }
 
 }
 

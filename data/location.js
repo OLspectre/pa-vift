@@ -19,7 +19,7 @@ export const locationsData = [
         challenge: "En lapp sitter uppsatt på en stolpe utanför Etage, leta upp den…",
         challAnswer: "Alla vill till himmelen men ingen vill dö",
         mainClueHint: "Jag står där historien sitter i vägg, men jag är inte levande – ändå full av skägg. Här kan du resa i tid utan att gå, och möta både nutid och det som var då.",
-        pinPoint: []
+        pinPoint: [55.60597077863497, 13.001271370775532]
 
     },
     {
@@ -40,7 +40,7 @@ export const locationsData = [
         acceptableAnswers: ["kronprinsen", "kronprinsen köpcentrum"],
         challenge: "Hitta skärmen där man kan få all information. Här letar vi efter nr 4…",
         challAnswer: "Hantverket",
-        mainClueHint: "Jag är det mest kända slottet i Malmö, omringad av vallgravar visar jag upp min och stadens historia.",
+        mainClueHint: "Där språk och herrar byttes utan att jag flyttades. Jag var en dansk försvarsvakt, men blev svensk historia.",
         pinPoint: [55.59755948133277, 12.983746646251431]
 
     }, {
@@ -50,11 +50,14 @@ export const locationsData = [
         acceptableAnswers: ["öresundspark", "öresundsparken"],
         challenge: "Leta efter skulpturen Vinden.",
         challAnswer: "1959",
+        mainClueHint: "Jag är det mest kända slottet i Malmö, omringad av vallgravar visar jag upp min och stadens historia.",
         pinPoint: [55.60383357314539, 12.974163506701444]
+    }, {
+        locationID: 5,
+        name: "Malmö Hus Slott",
+        acceptableAnswers: ["malmö hus", "malmö hus slott", "malmö slott"],
+        challenge: "Leta efter en staty som jonglerar",
+        challAnswer: "Gycklaren",
+        pinPoint: [55.604902868513754, 12.987372590247725]
     }
 ];
-export const endLocation =
-{
-    acceptableAnswers: ["malmö hus", "malmö hus slott", "malmö slott"],
-    finalChallenge: "Beskriver vad de gör på sista platsen"
-}

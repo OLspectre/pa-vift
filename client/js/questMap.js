@@ -65,11 +65,11 @@ function error(err) {
 renderChallenge();
 
 // PLACERA PIN
-map.on('click', (e) => {
-    const { lat, lng } = e.latlng
-    console.log("tryckte:", lat, lng)
-    placePin(lat, lng)
-})
+// map.on('click', (e) => {
+//     const { lat, lng } = e.latlng
+//     console.log("tryckte:", lat, lng)
+//     placePin(lat, lng)
+// })
 
 console.log(team.activeChallenge);
 
@@ -96,7 +96,7 @@ function placePin(dLat, dLng, locationID) {
         opacity: 1,
         fillOpacity: 1
     }).addTo(map);
-    destinationPin.bindPopup(`<b>Unlocked location:</b><br>${locationsData[locationID - 1].name}`).openPopup();
+    destinationPin.bindPopup(`<b>Upplåst destination:</b><br>${locationsData[locationID - 1].name}`).openPopup();
 
     allPins.push(destinationPin)
 
@@ -183,13 +183,21 @@ confirmBtn.addEventListener("click", () => {
             localStorage.setItem("team", JSON.stringify(team));
             closePopup();
             renderChallenge();
+            sheet.classList.add("hidden");
+            // Show confirmation of correct answer *******
+            // Show popup on backBtn
         },
         onWrong: () => {
-            alert("wrong");
+            alert("Fel svar");
         }
     })
 })
 
+console.log(team.activeChallenge, team.currLocation);
+team.activeChallenge !== team.currLocation ?
+    sheet.classList.add("hidden")
+    :
+    sheet.classList.remove("hidden");
 
 
 function renderChallenge() {
