@@ -112,6 +112,7 @@ confirmBtn.addEventListener("click", () => {
     validateInput(confirmBtn.id, inputField.value, {
         onCorrect: () => {
             if (confirmBtn.id === "destination") {
+                alert("Rätt!")
                 console.log("activeChallenge:", team.activeChallenge);
                 // team = JSON.parse(localStorage.getItem("team"));
                 if (team.currLocation === 1) {
@@ -139,6 +140,7 @@ confirmBtn.addEventListener("click", () => {
             }
         },
         onWrong: () => {
+            alert("Fel!")
             if (confirmBtn.id === "main") {
                 document.querySelector(".overlay-popup").style.display = "none"
                 guessEndBtn.classList.add("inactive")
@@ -160,6 +162,7 @@ confirmBtn.addEventListener("click", () => {
 const title = document.querySelector("#destinationCardContainer h3");
 const hintText = document.querySelector("#destinationCardContainer p");
 
+renderMainClues();
 
 
 export function updateUI() {
@@ -204,29 +207,34 @@ export function updateUI() {
     notification.classList.add("hidden");
 
     if (team.currLocation < 6) {
-        renderMainClue();
+        renderMainClues();
     }
 
 
 }
 
-function renderMainClue() {
-    hasMainCards.innerHTML += `
-        <div class="card">
-                <div id="pointContainer">
-                    <p>${points - 200}</p>
-                    <img src="../media/el_star-alt.svg" alt="point(s)">
-                </div>
-                <h3>Ledtråd ${team.currLocation}</h3>
-                <p>${team.hintsUnlocked[team.currLocation - 1]}</p>
-            </div>`
+function renderMainClues() {
+    hasMainCards.innerHTML = ""
 
-    endCardContainer.style.marginTop = "-20%";
+    for (let i = 0; i < team.hintsUnlocked.length; i++) {
+        const card = document.createElement("div")
+        card.classList.add("card")
+        card.innerHTML = `
+            <div id="pointContainer">
+                <p>${1000 - (i * 200)}</p>
+                <img src="../media/el_star-alt.svg" alt="point(s)">
+            </div>
+            <h3>Ledtråd ${i + 1}</h3>
+            <p>${team.hintsUnlocked[i]}</p>
+        `
+        hasMainCards.appendChild(card)
+    }
+
+    if (team.hintsUnlocked.length > 1) {
+        endCardContainer.style.marginTop = "-20%"
+    }
 }
-// function renderMainClue() {
-//     const clue = endLocation.riddles[team.completedLocations.length];
-//     endClueText.textContent = clue.hint;
-// }
+
 
 
 
@@ -237,16 +245,6 @@ mapBtn.addEventListener("click", () => {
 })
 updateUI()
 
-//för testing
-finishBtn.addEventListener("click", () => {
-    clearInterval(timer)
-    const result = calculateTimeTaken();
-    team.finalTime = result;
-    localStorage.setItem("team", JSON.stringify(team));//Uppdaterar objektet i localstorage
-    console.log(team.finalTime);
-    console.log(result);
-    // window.location.href = "/pages/gameEnd.html"
-})
 
 
 export function unlockMap() {

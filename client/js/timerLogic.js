@@ -70,7 +70,7 @@ export function resumeCooldown(showElement, onComplete) {
 function runCooldown(showElement, onComplete) {
     const cooldown = setInterval(() => {
         const elapsed = Math.floor((Date.now() - localStorage.getItem("cooldownStart")) / 1000)
-        const cooldownLeft = Math.max(0, 25 - elapsed)
+        const cooldownLeft = Math.max(0, 300 - elapsed)
         const mins = Math.floor(cooldownLeft / 60)
         const secs = cooldownLeft % 60
         showElement.textContent = `${mins}:${secs.toString().padStart(2, "0")}`

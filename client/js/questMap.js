@@ -183,6 +183,7 @@ inputField.addEventListener("input", () => {
 confirmBtn.addEventListener("click", () => {
     validateInput(confirmBtn.id, inputField.value, {
         onCorrect: () => {
+            alert("Rätt! Nya gåtor väntar!")
             let team = JSON.parse(localStorage.getItem("team"));
 
             if (team.currLocation === 6) {
@@ -194,7 +195,7 @@ confirmBtn.addEventListener("click", () => {
             }
 
             team.currLocation++;
-            let hint = locationsData.find(d => d.locationID === team.currLocation).hint;
+            let hint = locationsData.find(d => d.locationID === team.currLocation).mainClueHint;
             team.hintsUnlocked.push(hint);
 
             localStorage.setItem("team", JSON.stringify(team));
