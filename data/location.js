@@ -53,7 +53,7 @@ export const locationsData = [
         mainClueHint: "Jag är det mest kända slottet i Malmö, omringad av vallgravar visar jag upp min och stadens historia.",
         pinPoint: [55.60383357314539, 12.974163506701444]
     }, {
-        locationID: 5,
+        locationID: 6,
         name: "Malmö Hus Slott",
         acceptableAnswers: ["malmö hus", "malmö hus slott", "malmö slott"],
         challenge: "Leta efter en staty som jonglerar",

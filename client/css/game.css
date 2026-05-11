@@ -191,3 +191,9 @@ section {
         transform: scale(1);
     }
 }
+
+#hasMainCards {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}

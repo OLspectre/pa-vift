@@ -72,17 +72,27 @@ renderChallenge();
 // })
 
 console.log(team.activeChallenge);
-
 let allPins = [];
 
-for (let i = 1; i <= team.activeChallenge; i++) {
-
-    let pinData = locationsData[i - 1].pinPoint;
+if (team.activeChallenge === 6 && team.currLocation === 6) {
+    let pinData = locationsData.find(d => d.locationID === 6).pinPoint;
     let dLat = pinData[0], dLng = pinData[1];
 
-    console.log(`Placing pin for location ${i}:`, pinData);
-    placePin(dLat, dLng, i);
+    console.log(`Placing pin for location ${6}:`, pinData);
+    placePin(dLat, dLng, 6);
+} else {
+    for (let i = 1; i <= team.activeChallenge; i++) {
+
+        let pinData = locationsData[i - 1].pinPoint;
+        let dLat = pinData[0], dLng = pinData[1];
+
+        console.log(`Placing pin for location ${i}:`, pinData);
+        placePin(dLat, dLng, i);
+    }
 }
+
+
+
 
 
 
@@ -140,14 +150,9 @@ document.addEventListener('mouseup', () => { dragging = false });
 document.addEventListener('touchend', () => { dragging = false });
 
 
-
-
-
-
 const timer = startTimer(showTimer, () => {
     window.location.href = "/pages/gameEnd.html?result=dnf"
 })
-
 
 backBtn.addEventListener("click", (e) => {
     window.location.href = "../pages/game.html";
@@ -179,7 +184,19 @@ confirmBtn.addEventListener("click", () => {
     validateInput(confirmBtn.id, inputField.value, {
         onCorrect: () => {
             let team = JSON.parse(localStorage.getItem("team"));
+
+            if (team.currLocation === 6) {
+                clearInterval(timer);
+                team.finalTime = calculateTimeTaken();
+                localStorage.setItem("team", JSON.stringify(team));
+                window.location.href = "../pages/gameEnd.html";
+                return;
+            }
+
             team.currLocation++;
+            let hint = locationsData.find(d => d.locationID === team.currLocation).hint;
+            team.hintsUnlocked.push(hint);
+
             localStorage.setItem("team", JSON.stringify(team));
             closePopup();
             renderChallenge();

@@ -11,4 +11,5 @@
     display: grid;
     grid-template-columns: 2fr 2fr 1fr;
     border: 3px solid var(--hColor);
+    font-family: var(--pFont);
 }

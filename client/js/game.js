@@ -27,7 +27,7 @@ const finishBtn = document.getElementById("finishBtn");
 const showTimer = document.querySelector("#timer");
 const hasMapBtn = document.querySelector("#map-btn-wrapper");
 
-
+const hasMainCards = document.querySelector("#hasMainCards");
 
 const cooldownStart = localStorage.getItem("cooldownStart");
 if (cooldownStart) {
@@ -41,6 +41,7 @@ if (cooldownStart) {
     })
 }
 
+let points = 1000;
 let team = JSON.parse(localStorage.getItem("team"));
 
 if (!team.startTime) {
@@ -111,19 +112,30 @@ confirmBtn.addEventListener("click", () => {
     validateInput(confirmBtn.id, inputField.value, {
         onCorrect: () => {
             if (confirmBtn.id === "destination") {
-                if (team.activeChallenge === undefined) {
+                console.log("activeChallenge:", team.activeChallenge);
+                // team = JSON.parse(localStorage.getItem("team"));
+                if (team.currLocation === 1) {
                     team.activeChallenge = team.currLocation;
+                } else {
+                    team.activeChallenge++;
                 }
+                console.log("activeChallenge again:", team.activeChallenge);
                 unlockMap()
                 setTimeout(() => closePopup(), 1500)
+
                 localStorage.setItem("team", JSON.stringify(team));
                 updateUI();
             }
             if (confirmBtn.id === "main") {
-                clearInterval(timer)
-                team.finalTime = calculateTimeTaken()
-                localStorage.setItem("team", JSON.stringify(team))
-                window.location.href = "../pages/gameEnd.html"
+                alert("GRATTIS! Ni gissade rätt på slutmålet, ta er nu dit och registrera svaret för sista utmaningen för att stoppa tiden");
+                setTimeout(() => closePopup(), 1500);
+                unlockMap();
+                team.mainGuessedAt = team.currLocation;
+                console.log(team.mainGuessedAt);
+                team.activeChallenge = 6;
+                team.currLocation = 6;
+                localStorage.setItem("team", JSON.stringify(team));
+                updateUI();
             }
         },
         onWrong: () => {
@@ -176,7 +188,7 @@ export function updateUI() {
         title.textContent = "";
         hintText.textContent = "Lös utmaningen på destinationen för nästa gåta";
         hasMapBtn.style.display = "block";
-        notification.remove();
+        notification.classList.add("hidden");
         team.activeChallenge = team.currLocation;
         document.querySelector("#guessPartBtn").classList.add("inactive");
         document.querySelector("#guessPartBtn").disabled = true;
@@ -191,12 +203,26 @@ export function updateUI() {
     document.querySelector("#guessPartBtn").disabled = false;
     notification.classList.add("hidden");
 
-    for (let hint of team.hintsUnlocked) {
-
+    if (team.currLocation < 6) {
+        renderMainClue();
     }
+
 
 }
 
+function renderMainClue() {
+    hasMainCards.innerHTML += `
+        <div class="card">
+                <div id="pointContainer">
+                    <p>${points - 200}</p>
+                    <img src="../media/el_star-alt.svg" alt="point(s)">
+                </div>
+                <h3>Ledtråd ${team.currLocation}</h3>
+                <p>${team.hintsUnlocked[team.currLocation - 1]}</p>
+            </div>`
+
+    endCardContainer.style.marginTop = "-20%";
+}
 // function renderMainClue() {
 //     const clue = endLocation.riddles[team.completedLocations.length];
 //     endClueText.textContent = clue.hint;

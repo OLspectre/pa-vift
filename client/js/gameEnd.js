@@ -1,13 +1,23 @@
-import { teams } from "../../data/teams.js"
+import { teams } from "../../data/teams.js";
+import { getTimeLeft } from "./timerLogic.js";
 
-const team = JSON.parse(localStorage.getItem("team"));
+let team = JSON.parse(localStorage.getItem("team"));
 
 const leaderboard = document.querySelector("#leaderboard");
 const showEndTime = document.querySelector("#winOrLoseSection p");
 
 console.log(team.finalTime);
+console.log("team:", team);
 
-team.finalTime = { hours: 2, mins: 17, secs: 3 } // EXEMPEL ATT SE TID
+function calculateScore(team) {
+    const bonusPoints = { 1: 1000, 2: 800, 3: 600, 4: 400, 5: 200 }
+    const bonus = bonusPoints[team.mainGuessedAt] // vilket försök de gissade rätt
+    const timeUsed = 10800 - getTimeLeft()
+    const timeScore = Math.round(Math.pow((1 - timeUsed / 10800), 2) * 10000)
+    return bonus + timeScore;
+}
+
+team.score = calculateScore(team);
 
 
 if (!team.finalTime.hours && team.finalTime.mins) {
@@ -18,9 +28,20 @@ if (!team.finalTime.hours && team.finalTime.mins) {
     showEndTime.textContent = `Tid: ${team.finalTime.secs} Skunder`;
 }
 
+const mockUsers = [
+    { name: "Arvingarna", finalTime: { hours: 2, mins: 20, secs: 34 }, mainGuessedAt: 4, score: 800 }, // ~510p
+    { name: "Johannes", finalTime: { hours: 2, mins: 12, secs: 55 }, mainGuessedAt: 3, score: 1318 }, // ~772p
+    { name: "Surfshack stammisarna", finalTime: { hours: 1, mins: 33, secs: 22 }, mainGuessedAt: 1, score: 3314 }, // ~2157p
+    { name: "Smurfarna", finalTime: { hours: 1, mins: 52, secs: 3 }, mainGuessedAt: 2, score: 2224 }  // ~1512p
+];
+
+mockUsers.push(team);
+let scoreboard = mockUsers.sort((a, b) => b.score - a.score);
+console.log(scoreboard);
+
 
 (function createLeaderboard() {
-    for (let team of teams) {
+    for (let user of scoreboard) {
         const teamNameDiv = document.createElement("div");
         const teamTimeDiv = document.createElement("div");
         const teamPointsDiv = document.createElement("div");
@@ -45,9 +66,9 @@ if (!team.finalTime.hours && team.finalTime.mins) {
         leaderboard.appendChild(teamTimeDiv);
         leaderboard.appendChild(teamPointsDiv);
 
-        teamNameDiv.innerHTML = `${team.name}`;
-        // teamTimeDiv.innerHTML = `${team.finalTime.hours}:${team.finalTime.mins}:${team.finalTime.secs}`;
-        teamPointsDiv.innerHTML = `/* ??? */`;
+        teamNameDiv.innerHTML = `<b>${user.name}`;
+        teamTimeDiv.innerHTML = `${user.finalTime.hours}:${user.finalTime.mins}:${user.finalTime.secs}`;
+        teamPointsDiv.innerHTML = `${user.score} Poäng`;
     }
 })();
 

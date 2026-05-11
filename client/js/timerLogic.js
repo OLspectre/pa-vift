@@ -46,7 +46,7 @@ export function calculateTimeTaken(timeLeft) {
     const mins = Math.floor((timeUsed % 3600) / 60)
     const secs = timeUsed % 60
 
-    if (timeUsed < 3600) return { hour: hours, mins: mins, secs: secs };
+    if (timeUsed < 3600) return { hours: hours, mins: mins, secs: secs };
     if (timeUsed < 60) return { mins: mins, secs: secs };
     return { secs: secs };
 }
