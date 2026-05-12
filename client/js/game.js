@@ -190,6 +190,10 @@ export function updateUI() {
         // State 3: Sett notisen, ej löst utmaningen än
         title.textContent = "";
         hintText.textContent = "Lös utmaningen på destinationen för nästa gåta";
+
+        if (team.currLocation === 6) {
+            hintText.textContent = "Lös sista utmaningen för att stoppa tiden!"
+        }
         hasMapBtn.style.display = "block";
         notification.classList.add("hidden");
         team.activeChallenge = team.currLocation;
@@ -201,6 +205,10 @@ export function updateUI() {
     // State 4: Utmaningen löst — visa nästa gåta
     title.textContent = `Destination ${team.currLocation}`;
     hintText.textContent = locationsData.find(d => d.locationID === team.currLocation).hint;
+    console.log(hintText.textContent);
+    console.log(team.hintsUnlocked);
+    console.log(locationsData.find(d => d.locationID === team.currLocation));
+
     hasMapBtn.style.display = "block";
     document.querySelector("#guessPartBtn").classList.remove("inactive");
     document.querySelector("#guessPartBtn").disabled = false;
@@ -214,6 +222,28 @@ export function updateUI() {
 }
 
 function renderMainClues() {
+    // if (team.currLocation === 6) {
+    //     hasMainCards.innerHTML = ""
+
+    //     for (let i = 0; i < 5; i++) {
+    //         const card = document.createElement("div")
+    //         card.classList.add("card")
+    //         card.innerHTML = `
+    //         <div id="pointContainer">
+    //             <p>${1000 - (i * 200)}</p>
+    //             <img src="../media/el_star-alt.svg" alt="point(s)">
+    //         </div>
+    //         <h3>Ledtråd ${i + 1}</h3>
+    //         <p>${team.hintsUnlocked[i]}</p>
+    //     `
+    //         hasMainCards.appendChild(card)
+    //     }
+
+    //     if (team.hintsUnlocked.length > 1) {
+    //         endCardContainer.style.marginTop = "-20%"
+    //     }
+    //     return;
+    // }
     hasMainCards.innerHTML = ""
 
     for (let i = 0; i < team.hintsUnlocked.length; i++) {

@@ -58,6 +58,7 @@ export const locationsData = [
         acceptableAnswers: ["malmö hus", "malmö hus slott", "malmö slott"],
         challenge: "Leta efter en staty som jonglerar",
         challAnswer: "Gycklaren",
+        mainClueHint: "Jag är huset i staden malmö",
         pinPoint: [55.604902868513754, 12.987372590247725]
     }
 ];

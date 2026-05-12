@@ -10,7 +10,7 @@ console.log(team.finalTime);
 console.log("team:", team);
 
 function calculateScore(team) {
-    const bonusPoints = { 1: 1000, 2: 800, 3: 600, 4: 400, 5: 200 }
+    const bonusPoints = { 1: 1000, 2: 800, 3: 600, 4: 400, 5: 200, 6: 0 }
     const bonus = bonusPoints[team.mainGuessedAt] // vilket försök de gissade rätt
     const timeUsed = 10800 - getTimeLeft()
     const timeScore = Math.round(Math.pow((1 - timeUsed / 10800), 2) * 10000)

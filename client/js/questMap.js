@@ -197,6 +197,8 @@ confirmBtn.addEventListener("click", () => {
             team.currLocation++;
             let hint = locationsData.find(d => d.locationID === team.currLocation).mainClueHint;
             team.hintsUnlocked.push(hint);
+            console.log(team.hintsUnlocked);
+
 
             localStorage.setItem("team", JSON.stringify(team));
             closePopup();
