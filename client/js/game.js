@@ -107,6 +107,11 @@ inputField.addEventListener("input", () => {
     confirmBtn.classList.toggle("inactive", inputField.value.trim() === "")
 })
 
+inputField.addEventListener("click", () => {
+    inputField.removeAttribute("id");
+    inputField.value = "";
+})
+
 
 confirmBtn.addEventListener("click", () => {
     validateInput(confirmBtn.id, inputField.value, {
@@ -140,7 +145,6 @@ confirmBtn.addEventListener("click", () => {
             }
         },
         onWrong: () => {
-            alert("Fel!")
             if (confirmBtn.id === "main") {
                 document.querySelector(".overlay-popup").style.display = "none"
                 guessEndBtn.classList.add("inactive")
@@ -151,11 +155,18 @@ confirmBtn.addEventListener("click", () => {
                     guessEndBtn.textContent = "Svara"
                 })
             } else {
-                alert("Fel svar")
+                addIncorrectStyle();
             }
         }
     })
 })
+
+
+function addIncorrectStyle() {
+    inputField.id = "wrong";
+    inputField.value = `Fel svar`
+}
+
 
 
 
@@ -175,6 +186,8 @@ export function updateUI() {
         hasMapBtn.style.display = "none";
         return;
     }
+
+    if (team.currLocation == 6 && team.activeChallenge === 6) guessEndBtn.remove();
 
     if (team.mapUnlocked && !team.mapNotificationSeen) {
         // State 2: Kartan precis upplåst — visas endast en gång
