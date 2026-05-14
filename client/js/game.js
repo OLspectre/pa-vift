@@ -8,6 +8,8 @@ const buttonContainer = document.querySelector("#buttonContainer")
 const partClueBtn = document.querySelector("#partClueBtn");
 const endClueBtn = document.querySelector("#endClueBtn");
 
+const popupCard = document.querySelector(".answer-card");
+
 const overlayPopup = document.querySelector(".overlay-popup");
 const closeIcon = document.querySelector(".close-popup");
 const confirmBtn = document.querySelector(".answer-card button");
@@ -117,7 +119,9 @@ confirmBtn.addEventListener("click", () => {
     validateInput(confirmBtn.id, inputField.value, {
         onCorrect: () => {
             if (confirmBtn.id === "destination") {
-                alert("Rätt!")
+
+                popupCard.innerHTML = `<p>Rätt! <img src="../media/correctIcon.png" ></p>`
+
                 console.log("activeChallenge:", team.activeChallenge);
                 // team = JSON.parse(localStorage.getItem("team"));
                 if (team.currLocation === 1) {
