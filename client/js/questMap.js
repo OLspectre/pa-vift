@@ -92,11 +92,6 @@ if (team.activeChallenge === 6 && team.currLocation === 6) {
 }
 
 
-
-
-
-
-
 function placePin(dLat, dLng, locationID) {
     let destinationPin = L.circleMarker([dLat, dLng], {
         radius: 10,
@@ -178,12 +173,18 @@ const inputField = document.querySelector(".answer-card input");
 inputField.addEventListener("input", () => {
     confirmBtn.classList.toggle("inactive", inputField.value.trim() === "")
 })
+inputField.addEventListener("click", () => {
+    if (inputField.id === "wrong") {
+        inputField.removeAttribute("id");
+        inputField.value = "";
+    }
+})
 
 
 confirmBtn.addEventListener("click", () => {
     validateInput(confirmBtn.id, inputField.value, {
         onCorrect: () => {
-            alert("Rätt! Nya gåtor väntar!")
+            // Addera korrekt info om rätt svar
             let team = JSON.parse(localStorage.getItem("team"));
 
             if (team.currLocation === 6) {
@@ -208,7 +209,7 @@ confirmBtn.addEventListener("click", () => {
             // Show popup on backBtn
         },
         onWrong: () => {
-            alert("Fel svar");
+            addIncorrectStyle();
         }
     })
 })
@@ -226,6 +227,11 @@ function renderChallenge() {
 
     challengeTitle.textContent = `Utamaning ${team.currLocation}`;
     challengeText.textContent = `${challenge}`;
+}
+
+export function addIncorrectStyle() {
+    inputField.id = "wrong";
+    inputField.value = `Fel svar`
 }
 
 

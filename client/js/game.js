@@ -8,7 +8,7 @@ const buttonContainer = document.querySelector("#buttonContainer")
 const partClueBtn = document.querySelector("#partClueBtn");
 const endClueBtn = document.querySelector("#endClueBtn");
 
-const popupCard = document.querySelector(".answer-card");
+const popupCard = document.querySelector(".overlay-popup main .answer-card");
 
 const overlayPopup = document.querySelector(".overlay-popup");
 const closeIcon = document.querySelector(".close-popup");
@@ -16,6 +16,8 @@ const confirmBtn = document.querySelector(".answer-card button");
 const popupMain = document.querySelector("#popupMain");
 
 const mainAnswerCard = document.querySelector(".titleAndInput-container");
+const answerCardH4 = document.querySelector(".answer-card h4");
+const answerCardP = document.querySelector(".answer-card p");
 
 const guessEndBtn = document.querySelector("button#guessEndBtn");
 const warningDiv = document.querySelector("#warningDiv");
@@ -92,6 +94,8 @@ document.querySelector("#pageMain").addEventListener("click", function (e) {
     }
     if (e.target.id === "guessEndBtn") {
         overlayPopup.style.display = "flex";
+
+        inputField.value = "";
         warningDivContent = `Fel gissning låser svarsknappen för huvudgåtan i <span>5 minuter</span>`
         warningDiv.innerHTML = warningDivContent;
         confirmBtn.id = "main"
@@ -103,6 +107,11 @@ closeIcon.addEventListener("click", closePopup)
 export function closePopup() {
     overlayPopup.style.display = "none";
     inputField.value = "";
+    inputField.removeAttribute("id");
+
+    answerCardH4.textContent = "Lösning på gåtan";
+    closeIcon.style.display = "block";
+    inputField.style.display = "block";
 }
 
 inputField.addEventListener("input", () => {
@@ -110,8 +119,10 @@ inputField.addEventListener("input", () => {
 })
 
 inputField.addEventListener("click", () => {
-    inputField.removeAttribute("id");
-    inputField.value = "";
+    if (inputField.id === "wrong") {
+        inputField.removeAttribute("id");
+        inputField.value = "";
+    }
 })
 
 
@@ -120,10 +131,12 @@ confirmBtn.addEventListener("click", () => {
         onCorrect: () => {
             if (confirmBtn.id === "destination") {
 
-                popupCard.innerHTML = `<p>Rätt! <img src="../media/correctIcon.png" ></p>`
+                answerCardH4.textContent = "Rätt!";
+                inputField.style.display = "none";
+                closeIcon.style.display = "none";
+
 
                 console.log("activeChallenge:", team.activeChallenge);
-                // team = JSON.parse(localStorage.getItem("team"));
                 if (team.currLocation === 1) {
                     team.activeChallenge = team.currLocation;
                 } else {
@@ -131,14 +144,19 @@ confirmBtn.addEventListener("click", () => {
                 }
                 console.log("activeChallenge again:", team.activeChallenge);
                 unlockMap()
-                setTimeout(() => closePopup(), 1500)
+                setTimeout(() => closePopup(), 2500)
 
                 localStorage.setItem("team", JSON.stringify(team));
                 updateUI();
             }
             if (confirmBtn.id === "main") {
-                alert("GRATTIS! Ni gissade rätt på slutmålet, ta er nu dit och registrera svaret för sista utmaningen för att stoppa tiden");
-                setTimeout(() => closePopup(), 1500);
+                answerCardH4.textContent = "Rätt!";
+                inputField.style.display = "none";
+                closeIcon.style.display = "none";
+                guessEndBtn.style.display = "none";
+                warningDiv.style.display = "none";
+                answerCardP.textContent = "Lös nu sista utamningen för att stoppa tiden!"
+                setTimeout(() => closePopup(), 2500);
                 unlockMap();
                 team.mainGuessedAt = team.currLocation;
                 console.log(team.mainGuessedAt);
@@ -239,28 +257,7 @@ export function updateUI() {
 }
 
 function renderMainClues() {
-    // if (team.currLocation === 6) {
-    //     hasMainCards.innerHTML = ""
 
-    //     for (let i = 0; i < 5; i++) {
-    //         const card = document.createElement("div")
-    //         card.classList.add("card")
-    //         card.innerHTML = `
-    //         <div id="pointContainer">
-    //             <p>${1000 - (i * 200)}</p>
-    //             <img src="../media/el_star-alt.svg" alt="point(s)">
-    //         </div>
-    //         <h3>Ledtråd ${i + 1}</h3>
-    //         <p>${team.hintsUnlocked[i]}</p>
-    //     `
-    //         hasMainCards.appendChild(card)
-    //     }
-
-    //     if (team.hintsUnlocked.length > 1) {
-    //         endCardContainer.style.marginTop = "-20%"
-    //     }
-    //     return;
-    // }
     hasMainCards.innerHTML = ""
 
     for (let i = 0; i < team.hintsUnlocked.length; i++) {
