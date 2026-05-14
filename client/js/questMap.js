@@ -10,7 +10,7 @@ const overlayPopup = document.querySelector(".overlay-popup");
 const showTimer = document.querySelector("#timer");
 const challengeTitle = document.querySelector(".sheet-content h3");
 const challengeText = document.querySelector(".sheet-content p");
-
+const answerCardH4 = document.querySelector(".answer-card h4");
 
 
 var map = L.map('map')
@@ -187,6 +187,11 @@ confirmBtn.addEventListener("click", () => {
             // Addera korrekt info om rätt svar
             let team = JSON.parse(localStorage.getItem("team"));
 
+            answerCardH4.textContent = "Rätt!";
+            inputField.classList.add("hidden");
+            closeIcon.classList.add("hidden");
+            confirmBtn.classList.add("hidden");
+
             if (team.currLocation === 6) {
                 clearInterval(timer);
                 team.finalTime = calculateTimeTaken();
@@ -202,7 +207,7 @@ confirmBtn.addEventListener("click", () => {
 
 
             localStorage.setItem("team", JSON.stringify(team));
-            closePopup();
+            setTimeout(() => closePopup(), 2500);
             renderChallenge();
             sheet.classList.add("hidden");
             // Show confirmation of correct answer *******

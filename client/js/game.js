@@ -110,9 +110,11 @@ export function closePopup() {
     inputField.removeAttribute("id");
 
     answerCardH4.textContent = "Lösning på gåtan";
-    closeIcon.style.display = "block";
-    inputField.style.display = "block";
+    closeIcon.classList.remove("hidden");
+    inputField.classList.remove("hidden");
 }
+
+const inputWritten = "";
 
 inputField.addEventListener("input", () => {
     confirmBtn.classList.toggle("inactive", inputField.value.trim() === "")
@@ -121,7 +123,7 @@ inputField.addEventListener("input", () => {
 inputField.addEventListener("click", () => {
     if (inputField.id === "wrong") {
         inputField.removeAttribute("id");
-        inputField.value = "";
+        inputField.value = written;
     }
 })
 
@@ -132,9 +134,9 @@ confirmBtn.addEventListener("click", () => {
             if (confirmBtn.id === "destination") {
 
                 answerCardH4.textContent = "Rätt!";
-                inputField.style.display = "none";
-                closeIcon.style.display = "none";
-
+                inputField.classList.add("hidden");
+                closeIcon.classList.add("hidden");
+                confirmBtn.classList.add("hidden");
 
                 console.log("activeChallenge:", team.activeChallenge);
                 if (team.currLocation === 1) {
@@ -151,12 +153,13 @@ confirmBtn.addEventListener("click", () => {
             }
             if (confirmBtn.id === "main") {
                 answerCardH4.textContent = "Rätt!";
-                inputField.style.display = "none";
-                closeIcon.style.display = "none";
-                guessEndBtn.style.display = "none";
-                warningDiv.style.display = "none";
+
+                inputField.classList.add("hidden");
+                closeIcon.classList.add("hidden");
+                guessEndBtn.classList.add("hidden");
+                warningDiv.classList.add("hidden");
                 answerCardP.textContent = "Lös nu sista utamningen för att stoppa tiden!"
-                setTimeout(() => closePopup(), 2500);
+                setTimeout(() => closePopup(), 4000);
                 unlockMap();
                 team.mainGuessedAt = team.currLocation;
                 console.log(team.mainGuessedAt);
@@ -168,14 +171,24 @@ confirmBtn.addEventListener("click", () => {
         },
         onWrong: () => {
             if (confirmBtn.id === "main") {
-                document.querySelector(".overlay-popup").style.display = "none"
                 guessEndBtn.classList.add("inactive")
                 guessEndBtn.disabled = true
-                startCooldown(guessEndBtn, () => {
-                    guessEndBtn.disabled = false
-                    guessEndBtn.classList.remove("inactive")
-                    guessEndBtn.textContent = "Svara"
-                })
+                confirmBtn.classList.add("inactive");
+                addIncorrectStyle();
+
+                setTimeout(() => {
+                    closePopup()
+                    startCooldown(guessEndBtn, () => {
+                        guessEndBtn.disabled = false
+                        guessEndBtn.classList.remove("inactive");
+                        confirmBtn.classList.remove("inactive");
+
+                        guessEndBtn.textContent = "Svara";
+                    })
+                }, 3000);
+
+
+
             } else {
                 addIncorrectStyle();
             }

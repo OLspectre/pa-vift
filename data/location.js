@@ -55,7 +55,7 @@ export const locationsData = [
     }, {
         locationID: 6,
         name: "Malmö Hus Slott",
-        acceptableAnswers: ["malmö hus", "malmö hus slott", "malmö slott"],
+        acceptableAnswers: ["malmö hus", , "malmöhus slott", "malmöhus", "malmö hus slott", "malmö slott"],
         challenge: "Leta efter en staty som jonglerar",
         challAnswer: "Gycklaren",
         mainClueHint: "Jag är huset i staden malmö",
