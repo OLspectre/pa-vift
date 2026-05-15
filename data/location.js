@@ -40,7 +40,7 @@ export const locationsData = [
         acceptableAnswers: ["kronprinsen", "kronprinsen köpcentrum"],
         challenge: "Hitta skärmen där man kan få all information. Här letar vi efter nr 4…",
         challAnswer: "Hantverket",
-        mainClueHint: "Där språk och herrar byttes utan att jag flyttades. Jag var en dansk försvarsvakt, men blev svensk historia.",
+        mainClueHint: "Jag vakar över parken där en gammal mölla står tyst. Mina väggar är äldre än staden runt mig.",
         pinPoint: [55.59755948133277, 12.983746646251431]
 
     }, {
@@ -58,7 +58,7 @@ export const locationsData = [
         acceptableAnswers: ["malmö hus", , "malmöhus slott", "malmöhus", "malmö hus slott", "malmö slott"],
         challenge: "Leta efter en staty som jonglerar",
         challAnswer: "Gycklaren",
-        mainClueHint: "Jag är huset i staden malmö",
+        mainClueHint: "",
         pinPoint: [55.604902868513754, 12.987372590247725]
     }
 ];
