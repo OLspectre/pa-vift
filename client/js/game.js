@@ -27,7 +27,6 @@ const endCardContainer = document.querySelector("#endCardContainer");
 const mapBtn = document.querySelector("#mapBtn");
 const inputField = document.querySelector(".answer-card input");
 
-const finishBtn = document.getElementById("finishBtn");
 const showTimer = document.querySelector("#timer");
 const hasMapBtn = document.querySelector("#map-btn-wrapper");
 
@@ -45,7 +44,6 @@ if (cooldownStart) {
     })
 }
 
-let points = 1000;
 let team = JSON.parse(localStorage.getItem("team"));
 
 if (!team.startTime) {
@@ -125,7 +123,7 @@ inputField.addEventListener("input", () => {
 inputField.addEventListener("click", () => {
     if (inputField.id === "wrong") {
         inputField.removeAttribute("id");
-        inputField.value = written;
+        inputField.value = inputWritten;
     }
 })
 
@@ -192,6 +190,7 @@ confirmBtn.addEventListener("click", () => {
 
 
             } else {
+                inputWritten = inputField.value;
                 addIncorrectStyle();
             }
         }

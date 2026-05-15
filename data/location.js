@@ -5,7 +5,7 @@ export const locationsData = [
         locationID: 1,
         name: "McDonalds Anna Lindhs Plats",
         hint: "Den gyllene måsen är nära till hands och tittar ut över vattnet",
-        acceptableAnswers: ["McDonalds anna lindh plats", "anna lindh plats McDonalds", "McDonalds anna lindhs plats", "anna lindhs plats McDonalds", "McDonalds anna linds plats", "anna linds plats McDonalds"],
+        acceptableAnswers: ["mcdonalds", "mcdonald's", "McDonalds anna lindh plats", "anna lindh plats McDonalds", "McDonalds anna lindhs plats", "anna lindhs plats McDonalds", "McDonalds anna linds plats", "anna linds plats McDonalds"],
         challenge: "Här är min beställning, hur mycket kostar den? En Big Mac, 4 bitar chicken nuggets och en glass (sundae naturell)",
         challAnswer: "108",
         mainClueHint: "Vi lämnar fast mark och närmar oss något vars namn skulle kunna beskriva en helt vanlig bostad, men där alla har känt sig långt ifrån hemma.",
