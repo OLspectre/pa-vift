@@ -1,6 +1,6 @@
 
 
-const TOTAL_TIME = 5; //10800
+const TOTAL_TIME = 10800;
 
 export function getTimeLeft() {
     const team = JSON.parse(localStorage.getItem("team"));

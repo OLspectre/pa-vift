@@ -4,8 +4,13 @@ body {
     color: whitesmoke;
 }
 
-h2 {
+h2,
+h3 {
     color: whitesmoke;
+}
+
+h3 {
+    margin-bottom: 10px;
 }
 
 
@@ -22,12 +27,25 @@ h2 {
 
 #leaderboard {
     display: grid;
-    grid-template-columns: 2fr 2fr 1fr;
-    border: 3px solid rgb(117, 117, 117);
+    grid-template-columns: 3fr 2fr 1fr;
     font-family: var(--pFont);
-    background-color: slategray;
+    row-gap: 20px;
 }
 
 .whiteSmoke {
-    border: 1px solid rgb(117, 117, 117);
+    border-bottom: 1px solid whitesmoke;
+}
+
+.titles {
+    padding: 4px 8px;
+    font-size: var(--pSmall);
+    margin-bottom: -10px;
+}
+
+.rightAlign {
+    text-align: end;
+}
+
+#thanks {
+    margin-top: 40px;
 }
