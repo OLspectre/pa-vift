@@ -58,8 +58,10 @@ if (!team.startTime) {
 console.log("Team info:", team);
 
 const timer = startTimer(showTimer, () => {
-    team.endTime =
-        window.location.href = "/pages/gameEnd.html"
+    // clearInterval(timer);
+    team.finalTime = { hours: 0, mins: 0, secs: 0 };
+    localStorage.setItem("team", JSON.stringify(team));
+    window.location.href = "../pages/gameEnd.html"
 })
 
 
@@ -239,6 +241,10 @@ export function updateUI() {
         title.textContent = "";
         hintText.textContent = "Lös utmaningen på destinationen för nästa gåta";
 
+        if (team.currlocation === 5) {
+            title.textContent = "Sista chansen";
+            hintText.textCtontent = "Nu måste ni väl ändå klara det...?"
+        }
         if (team.currLocation === 6) {
             hintText.textContent = "Lös sista utmaningen för att stoppa tiden!"
         }

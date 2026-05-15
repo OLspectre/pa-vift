@@ -12,9 +12,13 @@ console.log("team:", team);
 function calculateScore(team) {
     const bonusPoints = { 1: 1000, 2: 800, 3: 600, 4: 400, 5: 200, 6: 0 }
     const bonus = bonusPoints[team.mainGuessedAt] // vilket försök de gissade rätt
-    const timeUsed = 10800 - getTimeLeft()
+    const timeUsed = 5 - getTimeLeft()
     const timeScore = Math.round(Math.pow((1 - timeUsed / 10800), 2) * 10000)
-    return bonus + timeScore;
+    if (timeUsed === 5) {
+        return 0
+    } else {
+        return bonus + timeScore;
+    }
 }
 
 team.score = calculateScore(team);
@@ -46,9 +50,15 @@ console.log(scoreboard);
         const teamTimeDiv = document.createElement("div");
         const teamPointsDiv = document.createElement("div");
 
-        teamNameDiv.style.border = "1px solid var(--hColor)";
-        teamTimeDiv.style.border = "1px solid var(--hColor)";
-        teamPointsDiv.style.border = "1px solid var(--hColor)";
+
+
+        teamNameDiv.classList.add("whiteSmoke");
+        teamTimeDiv.classList.add("whiteSmoke");
+        teamPointsDiv.classList.add("whiteSmoke");
+
+        // teamNameDiv.style.border = "1px solid var(--hColor)";
+        // teamTimeDiv.style.border = "1px solid var(--hColor)";
+        // teamPointsDiv.style.border = "1px solid var(--hColor)";
 
         teamNameDiv.style.height = "42px";
         teamTimeDiv.style.height = "42px";
@@ -69,6 +79,13 @@ console.log(scoreboard);
         teamNameDiv.innerHTML = `<b>${user.name}`;
         teamTimeDiv.innerHTML = `${user.finalTime.hours}:${user.finalTime.mins}:${user.finalTime.secs}`;
         teamPointsDiv.innerHTML = `${user.score} Poäng`;
+
+        if (team.score === 0 && teamNameDiv.textContent === team.name) {
+            teamTimeDiv.textContent = `DNF`;
+            document.querySelector("h2").textContent = "Ni förlorade!";
+            document.querySelector("p").textContent = "Bättre lycka nästa gång.";
+
+        }
     }
 })();
 

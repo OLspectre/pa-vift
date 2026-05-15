@@ -64,12 +64,6 @@ function error(err) {
 }
 renderChallenge();
 
-// PLACERA PIN
-// map.on('click', (e) => {
-//     const { lat, lng } = e.latlng
-//     console.log("tryckte:", lat, lng)
-//     placePin(lat, lng)
-// })
 
 console.log(team.activeChallenge);
 let allPins = [];
@@ -193,6 +187,8 @@ confirmBtn.addEventListener("click", () => {
             confirmBtn.classList.add("hidden");
 
             if (team.currLocation === 6) {
+                console.log("SVARAR RÄTT PÅ SISTA CHALLENGE");
+
                 clearInterval(timer);
                 team.finalTime = calculateTimeTaken();
                 localStorage.setItem("team", JSON.stringify(team));
@@ -200,9 +196,9 @@ confirmBtn.addEventListener("click", () => {
                 return;
             }
 
-            team.currLocation++;
             let hint = locationsData.find(d => d.locationID === team.currLocation).mainClueHint;
             team.hintsUnlocked.push(hint);
+            team.currLocation++;
             console.log(team.hintsUnlocked);
 
 

@@ -1,3 +1,16 @@
+body {
+    height: 100vh;
+    background-color: var(--hColor);
+    color: whitesmoke;
+}
+
+h2 {
+    color: whitesmoke;
+}
+
+
+
+
 #winOrLoseSection {
     height: 20vh;
     display: flex;
@@ -10,6 +23,11 @@
 #leaderboard {
     display: grid;
     grid-template-columns: 2fr 2fr 1fr;
-    border: 3px solid var(--hColor);
+    border: 3px solid rgb(117, 117, 117);
     font-family: var(--pFont);
+    background-color: slategray;
+}
+
+.whiteSmoke {
+    border: 1px solid rgb(117, 117, 117);
 }
