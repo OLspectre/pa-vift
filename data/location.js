@@ -4,7 +4,7 @@ export const locationsData = [
     {
         locationID: 1,
         name: "McDonalds Anna Lindhs Plats",
-        hint: "Den gyllene måsen är nära till hands och tittar ut över vattnet",
+        hint: "Den gyllene bågen är nära till hands och tittar ut över vattnet",
         acceptableAnswers: ["mcdonalds", "mcdonald's", "McDonalds anna lindh plats", "anna lindh plats McDonalds", "McDonalds anna lindhs plats", "anna lindhs plats McDonalds", "McDonalds anna linds plats", "anna linds plats McDonalds"],
         challenge: "Här är min beställning, hur mycket kostar den? En Big Mac, 4 bitar chicken nuggets och en glass (sundae naturell)",
         challAnswer: "108",
@@ -14,7 +14,7 @@ export const locationsData = [
     {
         locationID: 2,
         name: "Etagé",
-        hint: "När solen går ner vaknar huset till liv. Fjärdedelar av ljud. Här stiger ljudet våning för våning. Från golv till golv förändras genren.",
+        hint: "När solen går ner vaknar huset till liv. Fjärdedelar av ljud. Här stiger ljudet våning för våning.",
         acceptableAnswers: ["etage", "étage"],
         challenge: "En lapp sitter uppsatt på en stolpe utanför Etage, leta upp den…",
         challAnswer: "Alla vill till himmelen men ingen vill dö",

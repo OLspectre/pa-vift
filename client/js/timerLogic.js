@@ -29,10 +29,7 @@ export function startTimer(showTimer, onDone) {
         }
         if (timeLeft <= 0) {
             clearInterval(timer) // stops the interval
-            console.log("Game Over! Tiden rann ut!");
-
             onDone();
-            // window.href --> end game screen
         }
 
     }, 1000)
