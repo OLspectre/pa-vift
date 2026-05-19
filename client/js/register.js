@@ -18,7 +18,7 @@ export function registerUser() {
 
     if (!team) {
         console.log("fel");
-        errorCreatingTeamText.innerHTML = "Invalid code / password";
+        errorCreatingTeamText.innerHTML = "Fel kod försök igen";
         inputPassword.style.borderBottom = "3px solid red";
         return;
 

@@ -146,7 +146,7 @@ confirmBtn.addEventListener("click", () => {
                 }
                 console.log("activeChallenge again:", team.activeChallenge);
                 unlockMap()
-                setTimeout(() => closePopup(), 2500)
+                setTimeout(() => closePopup(), 2000)
 
                 localStorage.setItem("team", JSON.stringify(team));
                 updateUI();
@@ -240,13 +240,7 @@ export function updateUI() {
         title.textContent = "";
         hintText.textContent = "Lös utmaningen på destinationen för nästa gåta";
 
-        if (team.currlocation === 5) {
-            title.textContent = "Sista chansen";
-            hintText.textCtontent = "Nu måste ni väl ändå klara det...?"
-        }
-        if (team.currLocation === 6) {
-            hintText.textContent = "Lös sista utmaningen för att stoppa tiden!"
-        }
+
         hasMapBtn.style.display = "block";
         notification.classList.add("hidden");
         team.activeChallenge = team.currLocation;
@@ -254,6 +248,7 @@ export function updateUI() {
         document.querySelector("#guessPartBtn").disabled = true;
         return;
     }
+
 
     // State 4: Utmaningen löst — visa nästa gåta
     title.textContent = `Destination ${team.currLocation}`;
@@ -266,6 +261,11 @@ export function updateUI() {
     document.querySelector("#guessPartBtn").classList.remove("inactive");
     document.querySelector("#guessPartBtn").disabled = false;
     notification.classList.add("hidden");
+
+    if (team.currLocation === 6 && team.activeChallenge === 5) {
+        title.textContent = "Lös huvudgåtan"
+        document.querySelector("#guessPartBtn").classList.add("inactive");
+    }
 
     if (team.currLocation < 6) {
         renderMainClues();

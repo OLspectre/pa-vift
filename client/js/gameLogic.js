@@ -20,14 +20,14 @@ export function validateInput(answerType, userInput, callbacks) {
 }
 
 function checkClue(guess, currLocation) {
-    return currLocation.acceptableAnswers.some(a => a.toLowerCase() === guess.toLowerCase());
+    return currLocation.acceptableAnswers.some(a => a.toLowerCase() === guess.toLowerCase().trim(""));
 }
 
 function checkMainClue(guess) {
-    return locationsData[5].acceptableAnswers.some(a => a === guess.toLowerCase());
+    return locationsData[5].acceptableAnswers.some(a => a === guess.toLowerCase().trim(""));
 }
 
 function checkChallengeCode(guess, team) {
     const corrAnswers = locationsData.map(d => d.challAnswer);
-    return corrAnswers[team.currLocation - 1].toLowerCase() === guess.toLowerCase();
+    return corrAnswers[team.currLocation - 1].toLowerCase() === guess.toLowerCase().trim("");
 }

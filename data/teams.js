@@ -10,7 +10,7 @@ export const teams = [{
 {
     id: 2,
     name: "",
-    password: "2",
+    password: "7777",
     currLocation: 1,
     hintsUnlocked: [startClue]
 
@@ -18,7 +18,7 @@ export const teams = [{
 {
     id: 3,
     name: "",
-    password: "3",
+    password: "6767",
     currLocation: 1,
     hintsUnlocked: [startClue]
 
@@ -26,7 +26,7 @@ export const teams = [{
 {
     id: 4,
     name: "",
-    password: "4",
+    password: "0000",
     currLocation: 1,
     hintsUnlocked: [startClue]
 },
