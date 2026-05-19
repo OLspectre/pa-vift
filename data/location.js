@@ -27,8 +27,8 @@ export const locationsData = [
         name: "Stadsbiblioteket",
         hint: "Här lånas tankar ut utan att försvinna, och historier lämnar spår utan att gå vilse.",
         acceptableAnswers: ["stadsbiblioteket", "malmö stadsbibliotek"],
-        challenge: "Ta er till ljusets kalender och leta upp nr 746",
-        challAnswer: "Konst & Foto",
+        challenge: "Ta er till ljusets kalender och leta upp nr 746.4",
+        challAnswer: "Handarbete",
         mainClueHint: "Där språk och herrar byttes utan att jag flyttades. Jag var en dansk försvarsvakt, men blev svensk historia.",
         pinPoint: [55.60059517292868, 12.994113914662059]
 

@@ -11,7 +11,7 @@ const showTimer = document.querySelector("#timer");
 const challengeTitle = document.querySelector(".sheet-content h3");
 const challengeText = document.querySelector(".sheet-content p");
 const answerCardH4 = document.querySelector(".answer-card h4");
-
+const notification = document.querySelector("#back-notification")
 
 var map = L.map('map')
 
@@ -145,6 +145,7 @@ const timer = startTimer(showTimer, () => {
 
 backBtn.addEventListener("click", (e) => {
     window.location.href = "../pages/game.html";
+    notification.classList.add("hidden");
 })
 
 answerbtn.addEventListener("click", (e) => {
@@ -186,8 +187,12 @@ confirmBtn.addEventListener("click", () => {
             closeIcon.classList.add("hidden");
             confirmBtn.classList.add("hidden");
 
+            if (team.currLocation === 1) {
+                notification.classList.remove("hidden");
+                notification.textContent = "!";
+            }
+
             if (team.currLocation === 6) {
-                console.log("SVARAR RÄTT PÅ SISTA CHALLENGE");
 
                 clearInterval(timer);
                 team.finalTime = calculateTimeTaken();

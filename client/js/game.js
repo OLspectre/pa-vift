@@ -114,7 +114,7 @@ export function closePopup() {
     inputField.classList.remove("hidden");
 }
 
-const inputWritten = "";
+let inputWritten = "";
 
 inputField.addEventListener("input", () => {
     confirmBtn.classList.toggle("inactive", inputField.value.trim() === "")
@@ -160,6 +160,7 @@ confirmBtn.addEventListener("click", () => {
                 warningDiv.classList.add("hidden");
                 answerCardP.textContent = "Lös nu sista utamningen för att stoppa tiden!"
                 setTimeout(() => closePopup(), 4000);
+                confirmBtn.classList.add("hidden")
                 unlockMap();
                 team.mainGuessedAt = team.currLocation;
                 console.log(team.mainGuessedAt);
@@ -196,7 +197,6 @@ confirmBtn.addEventListener("click", () => {
         }
     })
 })
-
 
 function addIncorrectStyle() {
     inputField.id = "wrong";

@@ -70,3 +70,18 @@ body,
     text-align: center;
     top: 50px;
 }
+
+.notification {
+    position: absolute;
+    z-index: 99999;
+    background-color: #73a3ff;
+    color: white;
+    font-weight: bold;
+    border-radius: 100%;
+    width: 18px;
+    text-align: center;
+    padding: 4px;
+    animation: pulse 1s ease-in-out infinite;
+    top: 75px;
+    left: 80px;
+}
