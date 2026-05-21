@@ -64,8 +64,6 @@ function error(err) {
 }
 renderChallenge();
 
-
-console.log(team.activeChallenge);
 let allPins = [];
 
 if (team.activeChallenge === 6 && team.currLocation === 6) {
@@ -175,6 +173,12 @@ inputField.addEventListener("click", () => {
     }
 })
 
+// USE TO PINPOINT MARKER TO GET CORDINATES
+// map.on('click', (e) => {
+//     const { lat, lng } = e.latlng
+//     console.log(lat, lng)
+//     placePin(lat, lng)
+// })
 
 confirmBtn.addEventListener("click", () => {
     validateInput(confirmBtn.id, inputField.value, {

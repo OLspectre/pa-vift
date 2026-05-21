@@ -16,10 +16,10 @@ export const locationsData = [
         name: "Etagé",
         hint: "När solen går ner vaknar huset till liv. Fjärdedelar av ljud. Här stiger ljudet våning för våning.",
         acceptableAnswers: ["etage", "étage"],
-        challenge: "En lapp sitter uppsatt på en stolpe utanför Etage, leta upp den…",
+        challenge: "En lapp sitter uppsatt på ett elskåp en bit utanför Etage, leta upp den och läs...",
         challAnswer: "Alla vill till himmelen men ingen vill dö",
         mainClueHint: "Jag står där historien sitter i vägg, men jag är inte levande – ändå full av skägg. Här kan du resa i tid utan att gå, och möta både nutid och det som var då.",
-        pinPoint: [55.60597077863497, 13.001271370775532]
+        pinPoint: [55.60591168456533, 13.000194934888187]
 
     },
     {
