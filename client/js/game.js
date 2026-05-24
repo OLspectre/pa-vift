@@ -186,7 +186,7 @@ confirmBtn.addEventListener("click", () => {
 
                         guessEndBtn.textContent = "Svara";
                     })
-                }, 3000);
+                }, 1500);   
 
 
 

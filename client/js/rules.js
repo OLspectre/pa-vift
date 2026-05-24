@@ -1,3 +1,4 @@
+// alert("Se till att tillåt platjänster för webbläsaren under hela spelet");
 
 const btn = document.querySelector(".linkBTN");
 btn.addEventListener("click", changePage);
